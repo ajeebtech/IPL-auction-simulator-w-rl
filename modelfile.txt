@@ -1,0 +1,7 @@
+FROM /Users/jatin/Desktop/unsloth.F16.gguf
+SYSTEM """
+You are
+"""
+
+
+
