@@ -71,6 +71,8 @@ for url in urls:
     for name, age, role in zip(names, ages, roles):
         squad[name] = Player(name=name,age=age,role=role)
 def stats_taking(player, i):
+    while len(data) <= i:
+        data.append({})
     driver = webdriver.Chrome(options=options)
     driver.get('https://stats.espncricinfo.com/ci/engine/stats/index.html')
     driver.maximize_window()
@@ -116,6 +118,7 @@ def stats_taking(player, i):
         print(f'potm awards {potm_awards}')
         driver.get(menu_url)
     except Exception as e:
+        print('No awards found')
         driver.get(menu_url)
     
     radio_button = driver.find_element(By.XPATH, "//input[@type='radio' and @value='results']")
@@ -128,6 +131,7 @@ def stats_taking(player, i):
         losses = driver.find_elements(By.XPATH, "//td[text()='lost']")
         importance = len(wins) / len(losses)
         data[i]['importance'] = importance
+        print(f"Importance: {importance}")
         driver.get(menu_url)
     except Exception as e:
         driver.get(menu_url)
@@ -155,7 +159,10 @@ def stats_taking(player, i):
             data[i]['economy_rate'] = economy
         except Exception:
             pass
-        print(f"Wickets: {wickets}, Bowling Average: {bowling_average}, Economy: {economy}")
+        try:
+            print(f"Wickets: {wickets}, Bowling Average: {bowling_average}, Economy: {economy}")
+        except Exception:
+            pass
         driver.get(menu_url)
         radio_button = driver.find_element(By.XPATH, "//input[@type='radio' and @value='batting']")
         radio_button.click()
@@ -210,7 +217,10 @@ def stats_taking(player, i):
             data[i]['economy_rate'] = economy
         except Exception:
             pass
-        print(f"Wickets: {wickets}, Bowling Average: {bowling_average}, Economy: {economy}")
+        try:
+            print(f"Wickets: {wickets}, Bowling Average: {bowling_average}, Economy: {economy}")
+        except Exception:
+            pass
         driver.get(menu_url)
         for stadium, home in zip(stads, homes):
             dropdown = driver.find_element(By.NAME, "ground")
