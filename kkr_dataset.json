@@ -1,0 +1,240 @@
+[
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm offbreak, legbreak googly",
+        "awards": 10,
+        "importance": 1.207070707070707,
+        "runs": 5974,
+        "batting_average": 33.0,
+        "strike_rate": 133.64,
+        "fours": 505,
+        "sixes": 247
+    },
+    {
+        "bat_style": "right-hand bat",
+        "field_style": "wicketkeeper",
+        "awards": 1,
+        "importance": 0.975609756097561,
+        "runs": 1573,
+        "batting_average": 23.13,
+        "strike_rate": 116.77,
+        "fours": 139,
+        "sixes": 59
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm medium",
+        "awards": 6,
+        "importance": 1.1601423487544484,
+        "runs": 7008,
+        "batting_average": 31.56,
+        "strike_rate": 123.81,
+        "fours": 579,
+        "sixes": 222
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "slow left-arm orthodox",
+        "awards": 0,
+        "importance": 1.4705882352941178,
+        "runs": 54,
+        "batting_average": 287.0,
+        "strike_rate": 0.0,
+        "fours": 17
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm medium",
+        "field_style": "wicketkeeper",
+        "awards": 12,
+        "importance": 1.1513513513513514,
+        "runs": 4896,
+        "batting_average": 25.1,
+        "strike_rate": 146.8,
+        "fours": 390,
+        "sixes": 315
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm medium",
+        "awards": 0,
+        "importance": 1.5490196078431373,
+        "runs": 640,
+        "batting_average": 24.61,
+        "strike_rate": 172.5,
+        "fours": 42,
+        "sixes": 43
+    },
+    {
+        "bat_style": "left-hand bat",
+        "bowl_style": "right-arm medium, right-arm offbreak, legbreak",
+        "awards": 5,
+        "importance": 1.1222222222222222,
+        "runs": 4631,
+        "batting_average": 28.41,
+        "strike_rate": 134.89,
+        "fours": 405,
+        "sixes": 238
+    },
+    {
+        "bat_style": "left-hand bat",
+        "bowl_style": "right-arm fast-medium",
+        "awards": 8,
+        "importance": 1.2127659574468086,
+        "runs": 2545,
+        "batting_average": 22.72,
+        "strike_rate": 133.31,
+        "fours": 169,
+        "sixes": 159
+    },
+    {
+        "bat_style": "left-hand bat",
+        "bowl_style": "right-arm offbreak",
+        "awards": 4,
+        "importance": 1.0921985815602837,
+        "runs": 2976,
+        "batting_average": 35.01,
+        "strike_rate": 148.28,
+        "fours": 236,
+        "sixes": 145
+    },
+    {
+        "bat_style": "left-hand bat",
+        "bowl_style": "right-arm medium",
+        "awards": 5,
+        "importance": 1.3980582524271845,
+        "runs": 2896,
+        "batting_average": 36.65,
+        "strike_rate": 140.78,
+        "fours": 268,
+        "sixes": 120
+    },
+    {
+        "bat_style": "left-hand bat",
+        "bowl_style": "right-arm offbreak",
+        "awards": 37,
+        "importance": 1.2072649572649572,
+        "runs": 4318,
+        "batting_average": 15.42,
+        "strike_rate": 148.84,
+        "fours": 407,
+        "sixes": 271
+    },
+    {
+        "bat_style": "left-hand bat",
+        "bowl_style": "slow left-arm orthodox",
+        "awards": 0,
+        "importance": 1.0178571428571428,
+        "wickets": 37,
+        "bowling_average": 33.27,
+        "economy_rate": 7.13,
+        "runs": 657,
+        "batting_average": 21.19,
+        "strike_rate": 150.34,
+        "fours": 51,
+        "sixes": 32
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm fast",
+        "awards": 43,
+        "importance": 0.9884393063583815,
+        "bowling_average": 8.69,
+        "economy_rate": 17.5,
+        "runs": 8874,
+        "batting_average": 26.89,
+        "strike_rate": 169.31,
+        "fours": 586,
+        "sixes": 721
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm fast-medium",
+        "awards": 0,
+        "importance": 1.0408163265306123,
+        "wickets": 49,
+        "bowling_average": 28.26,
+        "economy_rate": 8.18,
+        "runs": 27,
+        "batting_average": 5.4,
+        "strike_rate": 67.5,
+        "fours": 0,
+        "sixes": 1
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm fast",
+        "awards": 1,
+        "importance": 0.9230769230769231,
+        "wickets": 128,
+        "bowling_average": 28.54,
+        "economy_rate": 8.11,
+        "runs": 208,
+        "batting_average": 7.7,
+        "strike_rate": 97.65,
+        "fours": 17,
+        "sixes": 7
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm offbreak",
+        "awards": 3,
+        "importance": 1.2142857142857142,
+        "wickets": 29,
+        "bowling_average": 11.62,
+        "economy_rate": 5.71
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm fast",
+        "awards": 0,
+        "importance": 1.0416666666666667,
+        "wickets": 28,
+        "bowling_average": 23.64,
+        "economy_rate": 8.94
+    },
+    {
+        "bat_style": "left-hand bat",
+        "bowl_style": "left-arm medium-fast",
+        "awards": 0,
+        "importance": 1.0444444444444445,
+        "wickets": 65,
+        "bowling_average": 20.16,
+        "economy_rate": 7.69
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "right-arm medium",
+        "awards": 0,
+        "importance": 1.0,
+        "wickets": 5,
+        "bowling_average": 39.0,
+        "economy_rate": 10.83
+    },
+    {
+        "bat_style": "left-hand bat",
+        "bowl_style": "left-arm fast",
+        "awards": 8,
+        "importance": 1.5321100917431192,
+        "wickets": 193,
+        "bowling_average": 20.59,
+        "economy_rate": 7.77
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "legbreak googly",
+        "awards": 0,
+        "importance": 0.8620689655172413,
+        "bowling_average": 7.35,
+        "economy_rate": 17.7
+    },
+    {
+        "bat_style": "right-hand bat",
+        "bowl_style": "legbreak googly",
+        "awards": 6,
+        "importance": 0.9230769230769231,
+        "wickets": 124,
+        "bowling_average": 22.42,
+        "economy_rate": 7.37
+    }
+]
