@@ -1,0 +1,25 @@
+bat_style,field_style,awards,importance,runs,batting_average,strike_rate,fours,sixes,label,bowl_style,wickets,bowling_average,economy_rate
+right-hand bat,wicketkeeper,13,1.1961538461538461,7293.0,29.88,137.03,603.0,334.0,buy,,,,
+right-hand bat,wicketkeeper,38,1.053658536585366,11967.0,34.99,145.24,1082.0,509.0,buy,,,,
+left-hand bat,,0,1.25,95.0,13.57,141.79,8.0,6.0,buy,slow left-arm orthodox,,,
+left-hand bat,,12,1.025423728813559,4661.0,26.18,135.92,319.0,251.0,buy,,,,
+left-hand bat,,8,1.292134831460674,2978.0,31.68,150.25,359.0,127.0,buy,legbreak,,,
+right-hand bat,wicketkeeper,0,1.323529411764705,445.0,21.19,133.63,33.0,21.0,buy,,,,
+right-hand bat,,6,1.148648648648648,3462.0,26.42,134.91,343.0,116.0,buy,right-arm offbreak,,,
+left-hand bat,,2,1.141304347826087,2806.0,31.17,131.98,305.0,95.0,buy,right-arm offbreak,,,
+right-hand bat,,2,1.076923076923076,2722.0,32.02,143.94,179.0,161.0,buy,"right-arm offbreak, legbreak",,,
+right-hand bat,,8,1.0,6075.0,37.26,131.86,427.0,265.0,buy,legbreak,,,
+right-hand bat,,10,1.257042253521126,1200.0,14.81,119.88,100.0,38.0,buy,right-arm offbreak,310.0,26.64,7.06
+right-hand bat,,2,1.0,663.0,18.94,113.72,55.0,15.0,buy,right-arm fast-medium,48.0,36.16,8.35
+right-hand bat,,4,0.9671361502347411,4720.0,31.25,136.06,310.0,188.0,buy,right-arm medium,,9.34,15.7
+left-hand bat,,10,1.029739776951673,4092.0,24.21,142.62,315.0,189.0,buy,right-arm medium-fast,,9.1,17.1
+right-hand bat,,0,0.5,,,,,,buy,,,8.09,43.0
+right-hand bat,,9,1.1581395348837211,,,,,,buy,left-arm fast-medium,275.0,25.39,8.06
+right-hand bat,,0,0.8888888888888881,,,,,,buy,legbreak,50.0,25.28,6.54
+right-hand bat,,12,1.05,,,,,,buy,legbreak googly,364.0,23.42,7.64
+left-hand bat,,3,1.155737704918032,,,,,,buy,left-arm fast-medium,164.0,23.35,8.73
+right-hand bat,,0,0.951807228915662,,,,,,buy,right-arm fast-medium,81.0,31.91,8.6
+right-hand bat,,2,1.213333333333333,,,,,,buy,right-arm fast,73.0,30.8,7.64
+right-hand bat,,0,1.1081081081081081,,,,,,buy,right-arm fast,32.0,34.5,8.93
+right-hand bat,,0,0.33333333333333304,,,,,,buy,legbreak googly,0.0,,12.66
+left-hand bat,,0,1.0,,,,,,buy,left-arm fast-medium,2.0,42.0,9.33

@@ -8,7 +8,8 @@
         "batting_average": 41.43,
         "strike_rate": 134.2,
         "fours": 1144,
-        "sixes": 416
+        "sixes": 416,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -20,7 +21,8 @@
         "batting_average": 37.24,
         "strike_rate": 150.13,
         "fours": 753,
-        "sixes": 436
+        "sixes": 436,
+        "label": "buy"
     },
     {
         "bat_style": "left-hand bat",
@@ -32,7 +34,8 @@
         "batting_average": 31.48,
         "strike_rate": 148.47,
         "fours": 358,
-        "sixes": 188
+        "sixes": 188,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -43,7 +46,8 @@
         "batting_average": 22.41,
         "strike_rate": 128.29,
         "fours": 116,
-        "sixes": 33
+        "sixes": 33,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -54,7 +58,8 @@
         "batting_average": 41.91,
         "strike_rate": 135.85,
         "fours": 643,
-        "sixes": 311
+        "sixes": 311,
+        "label": "buy"
     },
     {
         "bat_style": "left-hand bat",
@@ -65,7 +70,8 @@
         "batting_average": 29.79,
         "strike_rate": 131.98,
         "fours": 169,
-        "sixes": 64
+        "sixes": 64,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -79,7 +85,8 @@
         "batting_average": 20.01,
         "strike_rate": 126.13,
         "fours": 118,
-        "sixes": 64
+        "sixes": 64,
+        "label": "buy"
     },
     {
         "bat_style": "left-hand bat",
@@ -93,7 +100,8 @@
         "batting_average": 36.22,
         "strike_rate": 144.75,
         "fours": 1132,
-        "sixes": 1056
+        "sixes": 1056,
+        "label": "buy"
     },
     {
         "bat_style": "left-hand bat",
@@ -107,7 +115,8 @@
         "batting_average": 17.04,
         "strike_rate": 99.3,
         "fours": 38,
-        "sixes": 9
+        "sixes": 9,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -121,21 +130,16 @@
         "batting_average": 24.45,
         "strike_rate": 129.53,
         "fours": 233,
-        "sixes": 86
+        "sixes": 86,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
-        "bowl_style": "right-arm offbreak",
-        "awards": 2,
-        "importance": 1.6153846153846154,
-        "wickets": 13,
-        "bowling_average": 18.84,
-        "economy_rate": 6.28,
-        "runs": 155,
-        "batting_average": 14.09,
-        "strike_rate": 128.09,
-        "fours": 14,
-        "sixes": 5
+        "bowl_style": "right-arm medium-fast",
+        "awards": 0,
+        "bowling_average": 6.6,
+        "economy_rate": 30.0,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -149,7 +153,8 @@
         "batting_average": 19.53,
         "strike_rate": 105.66,
         "fours": 68,
-        "sixes": 22
+        "sixes": 22,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -163,7 +168,8 @@
         "batting_average": 29.3,
         "strike_rate": 138.3,
         "fours": 785,
-        "sixes": 467
+        "sixes": 467,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -176,7 +182,8 @@
         "batting_average": 23.19,
         "strike_rate": 144.81,
         "fours": 296,
-        "sixes": 244
+        "sixes": 244,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -185,7 +192,8 @@
         "importance": 0.9081632653061225,
         "wickets": 93,
         "bowling_average": 29.36,
-        "economy_rate": 8.53
+        "economy_rate": 8.53,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -194,7 +202,8 @@
         "importance": 1.0649350649350648,
         "wickets": 78,
         "bowling_average": 24.55,
-        "economy_rate": 7.53
+        "economy_rate": 7.53,
+        "label": "buy"
     },
     {
         "bat_style": "left-hand bat",
@@ -203,7 +212,8 @@
         "importance": 0.9418604651162791,
         "wickets": 103,
         "bowling_average": 21.77,
-        "economy_rate": 7.85
+        "economy_rate": 7.85,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -212,7 +222,8 @@
         "importance": 1.05,
         "wickets": 364,
         "bowling_average": 23.42,
-        "economy_rate": 7.64
+        "economy_rate": 7.64,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -221,7 +232,8 @@
         "importance": 1.04,
         "wickets": 24,
         "bowling_average": 21.66,
-        "economy_rate": 7.17
+        "economy_rate": 7.17,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -229,16 +241,17 @@
         "awards": 9,
         "importance": 1.0798898071625345,
         "bowling_average": 8.61,
-        "economy_rate": 18.8
+        "economy_rate": 18.8,
+        "label": "buy"
     },
     {
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm offbreak, slow left-arm orthodox",
         "awards": 0,
-        "importance": 1.2857142857142858,
         "wickets": 62,
         "bowling_average": 22.19,
-        "economy_rate": 6.5
+        "economy_rate": 6.5,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -247,7 +260,8 @@
         "importance": 0.9069767441860465,
         "wickets": 44,
         "bowling_average": 23.0,
-        "economy_rate": 7.34
+        "economy_rate": 7.34,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -256,15 +270,17 @@
         "importance": 1.1135135135135135,
         "wickets": 244,
         "bowling_average": 23.14,
-        "economy_rate": 8.34
+        "economy_rate": 8.34,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm fast-medium",
         "awards": 9,
-        "importance": 1.0923913043478262,
-        "bowling_average": 8.17,
-        "economy_rate": 17.2
+        "importance": 1.1032608695652173,
+        "bowling_average": 8.16,
+        "economy_rate": 17.2,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -272,7 +288,8 @@
         "awards": 17,
         "importance": 0.9278350515463918,
         "bowling_average": 7.41,
-        "economy_rate": 18.1
+        "economy_rate": 18.1,
+        "label": "buy"
     },
     {
         "bat_style": "right-hand bat",
@@ -281,6 +298,7 @@
         "importance": 1.2,
         "wickets": 16,
         "bowling_average": 24.81,
-        "economy_rate": 8.24
+        "economy_rate": 8.24,
+        "label": "buy"
     }
 ]

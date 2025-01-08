@@ -1,0 +1,24 @@
+bat_style,bowl_style,awards,importance,runs,batting_average,strike_rate,fours,sixes,label,field_style,wickets,bowling_average,economy_rate
+right-hand bat,right-arm offbreak,0,1.034782608695652,1986.0,25.46,123.66,188.0,70.0,buy,,,,
+left-hand bat,right-arm offbreak,26,1.079166666666666,10956.0,34.89,137.91,780.0,494.0,buy,,,,
+right-hand bat,right-arm medium,12,1.151351351351351,4896.0,25.1,146.8,390.0,315.0,buy,wicketkeeper,,,
+right-hand bat,,5,1.040322580645161,4655.0,24.24,127.95,458.0,143.0,buy,wicketkeeper,,,
+left-hand bat,legbreak,2,1.142857142857142,1512.0,39.78,130.45,140.0,35.0,buy,,,,
+right-hand bat,right-arm offbreak,11,1.094890510948905,4471.0,36.64,136.72,438.0,143.0,buy,,,,
+left-hand bat,right-arm medium,13,0.96629213483146,5097.0,26.68,136.06,450.0,169.0,buy,wicketkeeper,,,
+right-hand bat,right-arm medium-fast,14,1.3544303797468351,5239.0,29.93,141.78,388.0,279.0,buy,,,,
+left-hand bat,left-arm medium-fast,1,0.9315068493150681,472.0,15.73,125.19,35.0,26.0,buy,,66.0,30.43,9.04
+right-hand bat,legbreak googly,1,1.371428571428571,729.0,31.69,149.07,47.0,47.0,buy,,,,
+right-hand bat,legbreak googly,41,1.088992974238876,2544.0,13.82,146.71,185.0,167.0,buy,,,6.48,16.6
+right-hand bat,right-arm medium,1,0.9862068965517241,2336.0,26.24,129.77,163.0,95.0,buy,,36.0,33.02,8.18
+left-hand bat,legbreak,2,1.013157894736842,2008.0,27.5,143.32,185.0,86.0,buy,,69.0,26.34,7.4
+right-hand bat,right-arm fast,2,0.9081632653061221,133.0,8.86,72.28,11.0,4.0,buy,,93.0,29.36,8.53
+right-hand bat,right-arm fast,8,1.096153846153846,,,,,,buy,,,7.72,17.5
+right-hand bat,right-arm fast,4,1.086614173228346,,,,,,buy,,160.0,25.15,8.56
+right-hand bat,right-arm fast,3,1.158940397350993,,,,,,buy,,201.0,24.29,8.19
+right-hand bat,right-arm fast-medium,0,1.48780487804878,,,,,,buy,,80.0,17.41,8.31
+right-hand bat,left-arm wrist-spin,4,0.951612903225806,,,,,,buy,,,7.16,19.3
+left-hand bat,slow left-arm orthodox,1,1.574074074074074,,,,,,buy,,80.0,18.53,5.92
+right-hand bat,left-arm medium,1,1.193548387096774,,,,,,buy,,104.0,26.05,7.7
+right-hand bat,right-arm offbreak,0,1.071428571428571,,,,,,buy,,52.0,32.63,6.33
+right-hand bat,left-arm medium-fast,0,1.333333333333333,,,,,,buy,,53.0,29.45,8.46

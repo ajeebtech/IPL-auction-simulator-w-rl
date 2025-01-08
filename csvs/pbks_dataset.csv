@@ -1,0 +1,24 @@
+bat_style,bowl_style,awards,importance,runs,batting_average,strike_rate,fours,sixes,label,field_style,wickets,bowling_average,economy_rate
+right-hand bat,right-arm medium,8,0.953703703703703,4127.0,28.86,131.47,349.0,124.0,buy,,,,
+right-hand bat,right-arm offbreak,0,1.034782608695652,1986.0,25.46,123.66,188.0,70.0,buy,,,,
+left-hand bat,slow left-arm orthodox,22,0.8933333333333331,7050.0,37.9,128.53,679.0,222.0,buy,,,,
+left-hand bat,right-arm offbreak,26,1.079166666666666,10956.0,34.89,137.91,780.0,494.0,buy,,,,
+right-hand bat,legbreak,0,1.121212121212121,1556.0,29.35,112.18,182.0,27.0,buy,,,,
+right-hand bat,,5,1.040322580645161,4655.0,24.24,127.95,458.0,143.0,buy,wicketkeeper,,,
+right-hand bat,right-arm offbreak,12,1.173611111111111,4061.0,26.89,147.83,487.0,147.0,buy,,,,
+right-hand bat,right-arm medium,4,1.165289256198347,3340.0,28.79,126.65,332.0,117.0,buy,,,,
+right-hand bat,right-arm medium-fast,0,0.9708029197080291,1740.0,30.0,121.33,159.0,40.0,buy,,118.0,26.44,7.6
+right-hand bat,right-arm medium-fast,0,,,,,,,buy,,,6.6,30.0
+right-hand bat,right-arm offbreak,40,1.211822660098522,10125.0,27.58,153.96,860.0,509.0,buy,,,7.81,23.5
+left-hand bat,slow left-arm orthodox,17,1.123505976095617,3051.0,23.65,135.78,210.0,142.0,buy,,233.0,27.42,7.01
+left-hand bat,right-arm medium-fast,13,0.9602122015915111,4802.0,21.34,150.81,351.0,269.0,buy,,279.0,27.04,8.6
+right-hand bat,right-arm medium,0,0.7283950617283951,,,,,,buy,,64.0,29.89,8.2
+right-hand bat,right-arm medium,0,1.3018867924528301,,,,,,buy,,77.0,22.37,7.6
+right-hand bat,right-arm medium-fast,3,1.170212765957446,,,,,,buy,,126.0,22.19,7.76
+left-hand bat,left-arm fast-medium,3,0.950819672131147,,,,,,buy,,142.0,24.1,8.22
+left-hand bat,left-arm fast,5,1.365591397849462,,,,,,buy,,123.0,25.78,7.63
+left-hand bat,slow left-arm orthodox,3,0.959183673469387,,,,,,buy,,110.0,31.36,6.74
+right-hand bat,right-arm medium,0,1.0,,,,,,buy,,,,
+right-hand bat,right-arm medium,5,1.296551724137931,,,,,,buy,,189.0,26.79,8.92
+right-hand bat,legbreak googly,0,1.133333333333333,,,,,,buy,,21.0,22.19,8.57
+right-hand bat,slow left-arm orthodox,0,0.777777777777777,,,,,,buy,,6.0,29.66,6.59
