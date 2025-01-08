@@ -45,45 +45,76 @@ class Player:
         self.role = role
 squad = {}
 urls = ['https://www.espncricinfo.com/series/ipl-2016-968923/royal-challengers-bangalore-squad-969877/series-squads']
-for url in urls:
+for idx, url in enumerate(urls):
     rqsts = requests.get(url)
     soup = BeautifulSoup(rqsts.content,'lxml')
     names = soup.find_all('div', class_ = 'ds-flex ds-flex-row ds-items-center ds-justify-between')
     names = [name.text.strip() for name in names]
     names = [name.replace('(c)', '').replace('†', '') for name in names if "Withdrawn" not in name]
+    print(names)
     ages = soup.find_all('span', class_ = 'ds-text-compact-xxs ds-font-bold')
     ages = [age.text.strip() for age in ages]
     ages = [int(re.search(r'(\d+)y', age).group(1)) for age in ages if re.search(r'(\d+)y', age)]
+    print(ages)
     roles = soup.find_all('p',class_ = 'ds-text-tight-s ds-font-regular ds-mb-2 ds-mt-1')
     roles = [role.text.strip() for role in roles]
-    batting_styles = soup.find_all('span', )
     for i in range(len(roles)):
         if 'Batter' in roles[i]:
             roles[i] = 'Batter'
         elif 'Allrounder' in roles[i]:
             roles[i] = 'AllRounder'
-        elif 'Bowler' in roles[i]:
+        elif 'Bowler'.lower() in roles[i]:
             roles[i] = 'Bowler'
-    removes = len(names) - len(ages)
+        elif '' in roles[i]:
+            roles[i] = 'Bowler'
+    print(roles)
+    removes = len(names) - len(roles)
     n = removes
-    del ages[n:]
-    del roles[n:]
-    for name, age, role in zip(names, ages, roles):
-        squad[name] = Player(name=name,age=age,role=role)
+    print(len(names), len(ages), len(roles))
+    for name, role in zip(names, roles):
+        print(name, role)
+        squad[name] = Player(name=name, role=role)
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
+import time
+
 def stats_taking(player, i):
     while len(data) <= i:
         data.append({})
     driver = webdriver.Chrome(options=options)
+    options.add_argument('--headless')
     driver.get('https://stats.espncricinfo.com/ci/engine/stats/index.html')
     driver.maximize_window()
     search_box = driver.find_element(By.NAME, "search")
     search_query = player.name
-    search_box.send_keys(search_query)
+    search_box.send_keys(search_query.strip())
     search_box.send_keys(Keys.RETURN)
     link = driver.find_element(By.XPATH, "//a[starts-with(text(), 'Players and Officials')]")
     link.click()
-    link = driver.find_element(By.XPATH, "//a[text()='Twenty20 matches player']")
-    link.click()
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "gurusearch_player")))
+    table = driver.find_element(By.ID, "gurusearch_player")
+    max_matches = 0
+    link_to_click = None
+    rows = table.find_elements(By.XPATH, ".//table/tbody/tr[@valign='top']")
+    for row in rows:
+        try:
+            match_links = row.find_elements(By.XPATH, ".//td[3]/a[contains(text(), 'Twenty20 matches player')]")
+            
+            for link in match_links:
+                parent_text = link.find_element(By.XPATH, "./..").text
+                match = re.search(r"(\d+) matches", parent_text)
+                
+                if match:
+                    matches_count = int(match.group(1))
+                    if matches_count > max_matches:
+                        max_matches = matches_count
+                        link_to_click = link
+        except Exception as e:
+            print(f"Error processing row: {e}")
+            continue
+    link_to_click.click()
     menu_url = driver.current_url
     player_info = driver.find_element(By.XPATH, "//p[@style='padding-bottom:10px']").text
     try:
@@ -222,26 +253,26 @@ def stats_taking(player, i):
         except Exception:
             pass
         driver.get(menu_url)
-        for stadium, home in zip(stads, homes):
-            dropdown = driver.find_element(By.NAME, "ground")
-            try:
-                select = Select(dropdown)
-                select.select_by_visible_text(stadium)
-                radio_button = driver.find_element(By.XPATH, "//input[@type='radio' and @value='bowling']")
-                radio_button.click()
-                try:
-                    second_tbody = driver.find_elements(By.TAG_NAME, "tbody")[1]  
-                    row = second_tbody.find_element(By.CLASS_NAME, "data1") 
-                    value = row.find_elements(By.TAG_NAME, "td")[11].text 
-                    print(f"{home} economy: {value}")
-                    data[i][f'{home}_economy'] = float(value)
-                except:
-                    print(f"{home} economy: N/A")
-                    pass
-            except:
-                print(f"{home} economy: N/A")
-                continue
-            driver.get(menu_url)
+        # for stadium, home in zip(stads, homes):
+        #     dropdown = driver.find_element(By.NAME, "ground")
+        #     try:
+        #         select = Select(dropdown)
+        #         select.select_by_visible_text(stadium)
+        #         radio_button = driver.find_element(By.XPATH, "//input[@type='radio' and @value='bowling']")
+        #         radio_button.click()
+        #         try:
+        #             second_tbody = driver.find_elements(By.TAG_NAME, "tbody")[1]  
+        #             row = second_tbody.find_element(By.CLASS_NAME, "data1") 
+        #             value = row.find_elements(By.TAG_NAME, "td")[11].text 
+        #             print(f"{home} economy: {value}")
+        #             data[i][f'{home}_economy'] = float(value)
+        #         except:
+        #             print(f"{home} economy: N/A")
+        #             pass
+        #     except:
+        #         print(f"{home} economy: N/A")
+        #         continue
+        driver.get(menu_url)
     elif player.role == 'Batter':
         driver.get(menu_url)
         radio_button = driver.find_element(By.XPATH, "//input[@type='radio' and @value='batting']")
@@ -277,23 +308,24 @@ def stats_taking(player, i):
             pass
         print(f"Runs: {runs}, Batting Average: {batting_average}, Strike Rate: {strike_rate}")
         driver.get(menu_url)
-        for stadium, home in zip(stads, homes):
-            dropdown = driver.find_element(By.NAME, "ground")
-            select = Select(dropdown)
-            try:
-                select.select_by_visible_text(stadium)
-                radio_button = driver.find_element(By.XPATH, "//input[@type='radio' and @value='batting']")
-                radio_button.click()
-                submit_button = driver.find_element(By.XPATH, "//input[@type='submit' and @value='Submit query']")
-                second_tbody = driver.find_elements(By.TAG_NAME, "tbody")[1]  
-                row = second_tbody.find_element(By.CLASS_NAME, "data1")
-                value = row.find_elements(By.TAG_NAME, "td")[5].text
-                print(f"{home} average: {value}")
-                data[i][f'{home}_average'] = value
-            except:
-                print(f"{home} average: N/A")
-                pass
-            driver.get(menu_url)
+        # for stadium, home in zip(stads, homes):
+        #     dropdown = driver.find_element(By.NAME, "ground")
+        #     select = Select(dropdown)
+        #     try:
+        #         select.select_by_visible_text(stadium)
+        #         radio_button = driver.find_element(By.XPATH, "//input[@type='radio' and @value='batting']")
+        #         radio_button.click()
+        #         submit_button = driver.find_element(By.XPATH, "//input[@type='submit' and @value='Submit query']")
+        #         second_tbody = driver.find_elements(By.TAG_NAME, "tbody")[1]  
+        #         row = second_tbody.find_element(By.CLASS_NAME, "data1")
+        #         value = row.find_elements(By.TAG_NAME, "td")[5].text
+        #         print(f"{home} average: {value}")
+        #         data[i][f'{home}_average'] = value
+        #     except:
+        #         print(f"{home} average: N/A")
+        #         pass
+        #     driver.get(menu_url)
+    data[i]['label'] = 'buy'
     driver.quit()
 for i, player in enumerate(list(squad.values())):
     stats_taking(player, i)
