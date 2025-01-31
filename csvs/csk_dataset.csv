@@ -1,24 +1,24 @@
-bat_style,bowl_style,field_style,awards,importance,runs,batting_average,strike_rate,fours,sixes,label,wickets,bowling_average,economy_rate
-right-hand bat,right-arm medium,wicketkeeper,17,1.126027397260274,7432.0,38.11,135.64,517.0,338.0,buy,,,
-right-hand bat,legbreak googly,,2,1.061855670103092,1586.0,22.65,127.49,138.0,55.0,buy,,,
-left-hand bat,slow left-arm orthodox,,0,1.0,335.0,25.76,119.21,30.0,8.0,buy,,,
-right-hand bat,right-arm offbreak,,5,1.222222222222222,2300.0,28.75,112.74,217.0,42.0,buy,,,
-right-hand bat,right-arm medium,,8,0.953703703703703,4127.0,28.86,131.47,349.0,124.0,buy,,,
-left-hand bat,right-arm medium,,5,1.25,1632.0,36.26,136.91,181.0,63.0,buy,,,
-left-hand bat,right-arm medium,,21,1.091503267973856,4569.0,37.45,124.9,423.0,121.0,buy,,,
-left-hand bat,right-arm offbreak,wicketkeeper,5,1.03030303030303,4300.0,22.87,123.84,554.0,79.0,buy,,,
-left-hand bat,right-arm offbreak,,23,1.264406779661017,8654.0,32.17,137.45,779.0,325.0,buy,,,
-right-hand bat,right-arm offbreak,,7,1.147435897435897,4223.0,26.22,122.19,395.0,148.0,buy,,,
-right-hand bat,right-arm offbreak,,10,1.257042253521126,1200.0,14.81,119.88,100.0,38.0,buy,310.0,26.64,7.06
-right-hand bat,right-arm fast-medium,,5,1.096774193548387,1451.0,28.45,124.44,92.0,71.0,buy,56.0,22.71,7.51
-left-hand bat,right-arm medium-fast,,12,1.097972972972973,4248.0,26.38,138.59,268.0,248.0,buy,248.0,25.43,7.58
-left-hand bat,right-arm medium-fast,,13,0.9602122015915111,4802.0,21.34,150.81,351.0,269.0,buy,279.0,27.04,8.6
-right-hand bat,right-arm medium-fast,,3,1.170212765957446,54.0,4.9,87.09,4.0,2.0,buy,126.0,22.19,7.76
-left-hand bat,left-arm fast-medium,,3,1.18103448275862,,,,,,buy,139.0,25.47,7.82
-right-hand bat,right-arm medium,,2,1.1566265060240961,,,,,,buy,97.0,25.17,7.71
-left-hand bat,slow left-arm orthodox,,1,0.936170212765957,,,,,,buy,73.0,31.23,7.68
-right-hand bat,right-arm offbreak,,5,1.138157894736842,,,,,,buy,179.0,22.03,6.38
-right-hand bat,right-arm fast,,2,1.068965517241379,,,,,,buy,63.0,25.0,7.48
-left-hand bat,left-arm fast-medium,,0,1.3111111111111111,,,,,,buy,71.0,19.29,7.42
-right-hand bat,right-arm medium,,0,1.6,,,,,,buy,16.0,31.31,7.99
-right-hand bat,right-arm medium,,0,1.941176470588235,,,,,,buy,33.0,16.09,6.42
+name,bat_style,bowl_style,field_style,awards,importance,bowling_innings,wickets,economy_rate,7th position bowling,3rd position batting,4th position batting,5th position batting,6th position batting,7th position batting,8th position batting,9th position batting,runs,batting_average,batting_innings,strike_rate,fours,sixes,bowling_average,5th position bowling,6th position bowling,1st position batting,2nd position batting,4th position bowling,1st position bowling,3rd position bowling,8th position bowling,2nd position bowling,10th position batting,11th position batting
+Ms Dhoni ,right-hand bat,right-arm medium,1.0,17,1.126027397260274,1.0,0.0,12.5,0.0,27.58,38.89,46.46,31.44,33.0,65.66,0.0,7432,38.11,342,135.64,517,338,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Arun Karthik,right-hand bat,legbreak googly,0.0,2,1.061855670103092,2.0,2.0,11.0,0.0,31.76,28.75,22.57,6.0,17.0,0.0,12.0,1586,22.65,88,127.49,138,55,22.0,1.0,1.0,24.94,16.18,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Hemang Badani,left-hand bat,slow left-arm orthodox,0.0,0,1.0,9.0,7.0,6.5,0.0,23.0,22.54,42.0,0.0,0.0,0.0,0.0,335,25.76,16,119.21,30,8,20.42,7.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+S Badrinath,right-hand bat,right-arm offbreak,0.0,5,1.222222222222222,2.0,1.0,7.33,0.0,34.58,37.15,10.1,16.1,21.8,5.0,0.0,2300,28.75,110,112.74,217,42,22.0,0.0,1.0,7.5,41.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+George Bailey,right-hand bat,right-arm medium,0.0,8,0.953703703703703,1.0,0.0,12.0,0.0,20.81,31.54,32.97,23.25,15.0,0.0,0.0,4127,28.86,188,131.47,349,124,0.0,0.0,0.0,15.0,30.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Matthew Hayden,left-hand bat,right-arm medium,0.0,5,1.25,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1632,36.26,50,136.91,181,63,0.0,0.0,0.0,0.0,36.26,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Michael Hussey,left-hand bat,right-arm medium,0.0,21,1.091503267973856,1.0,0.0,5.0,0.0,48.95,31.94,15.75,10.75,124.0,0.0,0.0,4569,37.45,149,124.9,423,121,0.0,0.0,0.0,37.0,41.19,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Parthiv Patel,left-hand bat,right-arm offbreak,1.0,5,1.03030303030303,0.0,0.0,0.0,0.0,25.46,0.0,0.0,11.33,0.0,0.0,17.0,4300,22.87,200,123.84,554,79,0.0,0.0,0.0,22.74,23.11,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Suresh Raina,left-hand bat,right-arm offbreak,0.0,23,1.264406779661017,120.0,54.0,7.18,5.0,33.63,26.75,21.66,34.28,0.0,0.0,0.0,8654,32.17,319,137.45,779,325,34.66,14.0,25.0,0.0,0.0,9.0,0.0,0.0,1.0,0.0,0.0,0.0
+Murali Vijay,right-hand bat,right-arm offbreak,0.0,7,1.147435897435897,8.0,0.0,6.63,0.0,2.0,13.0,10.0,34.5,0.0,0.0,0.0,4223,26.22,166,122.19,395,148,0.0,0.0,0.0,27.57,26.32,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Ravichandran Ashwin,right-hand bat,right-arm offbreak,0.0,10,1.257042253521126,320.0,310.0,7.06,2.0,18.75,16.5,26.5,6.57,16.2,13.18,15.0,1200,14.81,135,119.88,100,38,26.64,50.0,24.0,0.0,14.0,71.0,35.0,93.0,0.0,35.0,12.75,0.0
+Justin Kemp,right-hand bat,right-arm fast-medium,0.0,5,1.096774193548387,67.0,56.0,7.51,0.0,68.0,31.63,23.72,25.75,29.83,0.0,0.0,1451,28.45,80,124.44,92,71,22.71,16.0,14.0,0.0,16.5,17.0,3.0,6.0,0.0,0.0,0.0,0.0
+Albie Morkel,left-hand bat,right-arm medium-fast,0.0,12,1.097972972972973,288.0,248.0,7.58,0.0,37.33,25.87,24.72,26.28,29.78,22.0,0.0,4248,26.38,254,138.59,268,248,25.43,28.0,15.0,18.0,0.0,37.0,86.0,44.0,0.0,38.0,0.0,0.0
+Thisara Perera,left-hand bat,right-arm medium-fast,0.0,14,0.955844155844155,322.0,282.0,8.61,31.0,25.16,16.61,24.0,23.92,19.04,18.26,19.25,4873,21.18,317,151.1,357,274,27.15,53.0,49.0,0.0,2.0,46.0,11.0,47.0,0.0,45.0,0.0,0.0
+Lakshmipathy Balaji,right-hand bat,right-arm medium-fast,0.0,3,1.170212765957446,104.0,126.0,7.76,2.0,0.0,0.0,0.0,0.0,12.0,0.0,4.66,54,4.9,20,87.09,4,2,22.19,9.0,15.0,0.0,0.0,19.0,33.0,31.0,0.0,17.0,1.33,10.0
+Doug Bollinger,left-hand bat,left-arm fast-medium,0.0,3,1.18103448275862,128.0,139.0,7.82,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,69,6.27,20,95.83,5,2,25.47,2.0,1.0,0.0,0.0,11.0,37.0,20.0,0.0,68.0,10.0,3.57
+Manpreet Gony,right-hand bat,right-arm medium,0.0,2,1.1566265060240961,90.0,97.0,7.71,0.0,0.0,29.0,0.0,2.0,15.07,12.56,11.75,501,13.54,54,149.55,33,31,25.17,3.0,0.0,0.0,0.0,3.0,26.0,13.0,0.0,52.0,24.0,0.0
+Shadab Jakati,left-hand bat,slow left-arm orthodox,0.0,1,0.936170212765957,89.0,73.0,7.68,2.0,0.0,6.0,16.5,17.0,13.33,6.8,3.25,185,10.27,28,103.35,18,3,31.23,21.0,9.0,0.0,0.0,23.0,3.0,15.0,0.0,0.0,0.0,0.0
+Muthiah Muralidaran,right-hand bat,right-arm offbreak,0.0,5,1.138157894736842,164.0,179.0,6.38,0.0,0.0,0.0,0.0,0.0,0.0,11.0,2.2,81,3.37,38,73.63,3,2,22.03,69.0,11.0,0.0,0.0,52.0,11.0,32.0,0.0,4.0,4.18,2.16
+Makhaya Ntini,right-hand bat,right-arm fast,0.0,2,1.068965517241379,60.0,63.0,7.48,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,30,5.0,12,69.76,5,0,25.0,0.0,0.0,0.0,0.0,0.0,28.0,9.0,0.0,26.0,4.0,6.0
+Thilan Thushara,left-hand bat,left-arm fast-medium,0.0,0,1.3111111111111111,53.0,71.0,7.42,0.0,4.0,5.5,0.0,0.0,22.66,13.16,8.33,233,10.59,32,111.48,12,13,19.29,0.0,4.0,0.0,1.0,9.0,24.0,10.0,0.0,24.0,9.0,0.0
+Sudeep Tyagi,right-hand bat,right-arm medium,0.0,0,1.6,25.0,16.0,7.99,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5,2.5,5,71.42,0,0,31.31,0.0,0.0,0.0,0.0,0.0,1.0,4.0,0.0,11.0,0.0,2.5
+Chandrasekar Ganapathy,right-hand bat,right-arm medium,0.0,0,1.941176470588235,24.0,33.0,6.42,0.0,0.0,0.0,0.0,0.0,0.0,4.0,5.66,37,4.11,11,94.87,1,2,16.09,4.0,0.0,0.0,0.0,0.0,7.0,6.0,0.0,16.0,0.0,0.0
