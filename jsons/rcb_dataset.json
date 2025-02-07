@@ -1,6 +1,7 @@
 [
     {
         "name": "Virat Kohli",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 37,
@@ -31,6 +32,7 @@
     },
     {
         "name": "Ab De Villiers",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "field_style": 1,
@@ -52,6 +54,7 @@
     },
     {
         "name": "Travis Head",
+        "role": "Batter",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm offbreak",
         "field_style": 1,
@@ -82,6 +85,7 @@
     },
     {
         "name": "Sarfaraz Khan",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "legbreak",
         "awards": 0,
@@ -106,6 +110,7 @@
     },
     {
         "name": "Kl Rahul",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "field_style": 1,
         "awards": 17,
@@ -125,6 +130,7 @@
     },
     {
         "name": "Sachin Baby",
+        "role": "Batter",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 0,
@@ -153,6 +159,7 @@
     },
     {
         "name": "Stuart Binny",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 0,
@@ -182,6 +189,7 @@
     },
     {
         "name": "Chris Gayle",
+        "role": "AllRounder",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 60,
@@ -212,6 +220,7 @@
     },
     {
         "name": "Iqbal Abdulla",
+        "role": "AllRounder",
         "bat_style": "left-hand bat",
         "bowl_style": "slow left-arm orthodox",
         "awards": 2,
@@ -243,6 +252,7 @@
     },
     {
         "name": "Kedar Jadhav",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 3,
@@ -270,6 +280,7 @@
     },
     {
         "name": "Mandeep Singh",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 0,
@@ -278,6 +289,7 @@
     },
     {
         "name": "Parvez Rasool",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 0,
@@ -308,6 +320,7 @@
     },
     {
         "name": "Shane Watson",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm fast-medium",
         "awards": 38,
@@ -339,6 +352,7 @@
     },
     {
         "name": "David Wiese",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 19,
@@ -361,6 +375,7 @@
     },
     {
         "name": "Varun Aaron",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm fast",
         "awards": 2,
@@ -389,6 +404,7 @@
     },
     {
         "name": "Abu Nechim",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 0,
@@ -416,6 +432,7 @@
     },
     {
         "name": "Sreenath Aravind",
+        "role": "Bowler",
         "bat_style": "left-hand bat",
         "bowl_style": "left-arm medium-fast",
         "awards": 1,
@@ -442,6 +459,7 @@
     },
     {
         "name": "Yuzvendra Chahal",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "legbreak googly",
         "awards": 12,
@@ -468,6 +486,7 @@
     },
     {
         "name": "Praveen Dubey",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "legbreak googly",
         "awards": 0,
@@ -495,11 +514,12 @@
     },
     {
         "name": "Chris Jordan",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm fast-medium",
         "awards": 9,
-        "importance": 1.0844686648501363,
-        "bowling_innings": 386,
+        "importance": 1.084010840108401,
+        "bowling_innings": 388,
         "bowling_average": 8.62,
         "economy_rate": 18.9,
         "2nd position batting": 24.0,
@@ -507,19 +527,20 @@
         "4th position batting": 25.0,
         "5th position batting": 77.0,
         "6th position batting": 26.08,
-        "7th position batting": 19.7,
+        "7th position batting": 20.07,
         "8th position batting": 15.39,
         "9th position batting": 9.89,
         "10th position batting": 4.33,
-        "runs": 2345,
-        "batting_average": 16.99,
-        "batting_innings": 238,
-        "strike_rate": 131.22,
-        "fours": 162,
+        "runs": 2355,
+        "batting_average": 17.06,
+        "batting_innings": 239,
+        "strike_rate": 131.49,
+        "fours": 164,
         "sixes": 113
     },
     {
         "name": "Akshay Karnewar",
+        "role": "Bowler",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm offbreak, slow left-arm orthodox",
         "awards": 0,
@@ -547,6 +568,7 @@
     },
     {
         "name": "Vikramjeet Malik",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 1,
@@ -573,6 +595,7 @@
     },
     {
         "name": "Harshal Patel",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 5,
@@ -606,6 +629,7 @@
     },
     {
         "name": "Kane Richardson",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm fast-medium",
         "awards": 9,
@@ -627,25 +651,27 @@
     },
     {
         "name": "Tabraiz Shamsi",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "left-arm wrist-spin",
         "awards": 17,
-        "importance": 0.935374149659864,
-        "bowling_innings": 282,
-        "bowling_average": 7.43,
+        "importance": 0.9355932203389831,
+        "bowling_innings": 283,
+        "bowling_average": 7.44,
         "economy_rate": 18.1,
         "9th position batting": 1.75,
         "10th position batting": 8.5,
-        "11th position batting": 4.11,
-        "runs": 87,
-        "batting_average": 4.14,
-        "batting_innings": 60,
-        "strike_rate": 52.09,
+        "11th position batting": 4.22,
+        "runs": 88,
+        "batting_average": 4.19,
+        "batting_innings": 61,
+        "strike_rate": 52.38,
         "fours": 2,
         "sixes": 1
     },
     {
         "name": "Vikas Tokas",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 0,

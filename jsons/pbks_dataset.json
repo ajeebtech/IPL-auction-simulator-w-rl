@@ -1,6 +1,7 @@
 [
     {
         "name": "George Bailey",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 8,
@@ -25,6 +26,7 @@
     },
     {
         "name": "Gurkeerat Singh Mann",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 0,
@@ -54,6 +56,7 @@
     },
     {
         "name": "Shaun Marsh",
+        "role": "Batter",
         "bat_style": "left-hand bat",
         "bowl_style": "slow left-arm orthodox",
         "awards": 22,
@@ -79,27 +82,29 @@
     },
     {
         "name": "David Miller",
+        "role": "Batter",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 26,
-        "importance": 1.0821355236139631,
+        "importance": 1.0819672131147542,
         "bowling_innings": 3,
         "bowling_average": 10.33,
         "2nd position batting": 24.0,
         "3rd position batting": 28.34,
         "4th position batting": 34.81,
         "5th position batting": 38.13,
-        "6th position batting": 35.69,
+        "6th position batting": 35.85,
         "7th position batting": 10.14,
-        "runs": 11139,
-        "batting_average": 35.25,
-        "batting_innings": 471,
-        "strike_rate": 137.85,
-        "fours": 794,
-        "sixes": 499
+        "runs": 11184,
+        "batting_average": 35.28,
+        "batting_innings": 472,
+        "strike_rate": 137.97,
+        "fours": 798,
+        "sixes": 502
     },
     {
         "name": "Cheteshwar Pujara",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "legbreak",
         "awards": 0,
@@ -119,6 +124,7 @@
     },
     {
         "name": "Wriddhiman Saha",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "field_style": 1,
         "awards": 5,
@@ -141,6 +147,7 @@
     },
     {
         "name": "Virender Sehwag",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 12,
@@ -168,6 +175,7 @@
     },
     {
         "name": "Manan Vohra",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 4,
@@ -187,6 +195,7 @@
     },
     {
         "name": "Rishi Dhawan",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 0,
@@ -217,6 +226,7 @@
     },
     {
         "name": "Mandeep Singh",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 0,
@@ -225,6 +235,7 @@
     },
     {
         "name": "Glenn Maxwell",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 43,
@@ -249,10 +260,11 @@
     },
     {
         "name": "Axar Patel",
+        "role": "AllRounder",
         "bat_style": "left-hand bat",
         "bowl_style": "slow left-arm orthodox",
         "awards": 17,
-        "importance": 1.1383399209486167,
+        "importance": 1.1377952755905512,
         "bowling_innings": 269,
         "wickets": 239,
         "bowling_average": 27.15,
@@ -269,21 +281,22 @@
         "5th position batting": 29.94,
         "6th position batting": 21.65,
         "7th position batting": 22.11,
-        "8th position batting": 18.23,
+        "8th position batting": 18.05,
         "9th position batting": 8.0,
-        "runs": 3073,
-        "batting_average": 23.28,
-        "batting_innings": 197,
+        "runs": 3088,
+        "batting_average": 23.21,
+        "batting_innings": 198,
         "strike_rate": 135.37,
-        "fours": 212,
+        "fours": 214,
         "sixes": 142
     },
     {
         "name": "Thisara Perera",
+        "role": "AllRounder",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 14,
-        "importance": 0.9558441558441558,
+        "importance": 0.9559585492227979,
         "bowling_innings": 322,
         "wickets": 282,
         "bowling_average": 27.15,
@@ -299,19 +312,20 @@
         "3rd position batting": 25.16,
         "4th position batting": 16.61,
         "5th position batting": 24.0,
-        "6th position batting": 23.92,
+        "6th position batting": 23.61,
         "7th position batting": 19.04,
         "8th position batting": 18.26,
         "9th position batting": 19.25,
         "runs": 4873,
-        "batting_average": 21.18,
-        "batting_innings": 317,
-        "strike_rate": 151.1,
+        "batting_average": 21.09,
+        "batting_innings": 318,
+        "strike_rate": 151.05,
         "fours": 357,
         "sixes": 274
     },
     {
         "name": "Anureet Singh",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 0,
@@ -345,6 +359,7 @@
     },
     {
         "name": "Parvinder Awana",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 0,
@@ -369,6 +384,7 @@
     },
     {
         "name": "Lakshmipathy Balaji",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 3,
@@ -397,6 +413,7 @@
     },
     {
         "name": "Beuran Hendricks",
+        "role": "Bowler",
         "bat_style": "left-hand bat",
         "bowl_style": "left-arm fast-medium",
         "awards": 3,
@@ -423,6 +440,7 @@
     },
     {
         "name": "Mitchell Johnson",
+        "role": "Bowler",
         "bat_style": "left-hand bat",
         "bowl_style": "left-arm fast",
         "awards": 5,
@@ -450,6 +468,7 @@
     },
     {
         "name": "Murali Kartik",
+        "role": "Bowler",
         "bat_style": "left-hand bat",
         "bowl_style": "slow left-arm orthodox",
         "awards": 3,
@@ -483,6 +502,7 @@
     },
     {
         "name": "Sandeep Sharma",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 0,
@@ -496,6 +516,7 @@
     },
     {
         "name": "Shardul Thakur",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 5,
@@ -527,6 +548,7 @@
     },
     {
         "name": "Karanveer Singh",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "legbreak googly",
         "awards": 0,
@@ -551,6 +573,7 @@
     },
     {
         "name": "Shivam Sharma",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "slow left-arm orthodox",
         "awards": 0,

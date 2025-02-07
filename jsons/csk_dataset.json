@@ -1,6 +1,7 @@
 [
     {
         "name": "Ms Dhoni ",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "field_style": 1,
@@ -26,6 +27,7 @@
     },
     {
         "name": "Arun Karthik",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "legbreak googly",
         "awards": 2,
@@ -53,6 +55,7 @@
     },
     {
         "name": "Hemang Badani",
+        "role": "Batter",
         "bat_style": "left-hand bat",
         "bowl_style": "slow left-arm orthodox",
         "awards": 0,
@@ -76,6 +79,7 @@
     },
     {
         "name": "S Badrinath",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 5,
@@ -103,6 +107,7 @@
     },
     {
         "name": "George Bailey",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 8,
@@ -127,6 +132,7 @@
     },
     {
         "name": "Matthew Hayden",
+        "role": "Batter",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 5,
@@ -141,6 +147,7 @@
     },
     {
         "name": "Michael Hussey",
+        "role": "Batter",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 21,
@@ -165,6 +172,7 @@
     },
     {
         "name": "Parthiv Patel",
+        "role": "Batter",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm offbreak",
         "field_style": 1,
@@ -184,6 +192,7 @@
     },
     {
         "name": "Suresh Raina",
+        "role": "Batter",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 23,
@@ -212,6 +221,7 @@
     },
     {
         "name": "Murali Vijay",
+        "role": "Batter",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 7,
@@ -238,6 +248,7 @@
     },
     {
         "name": "Ravichandran Ashwin",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 10,
@@ -271,6 +282,7 @@
     },
     {
         "name": "Justin Kemp",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm fast-medium",
         "awards": 5,
@@ -301,6 +313,7 @@
     },
     {
         "name": "Albie Morkel",
+        "role": "AllRounder",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 12,
@@ -332,10 +345,11 @@
     },
     {
         "name": "Thisara Perera",
+        "role": "AllRounder",
         "bat_style": "left-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 14,
-        "importance": 0.9558441558441558,
+        "importance": 0.9559585492227979,
         "bowling_innings": 322,
         "wickets": 282,
         "bowling_average": 27.15,
@@ -351,19 +365,20 @@
         "3rd position batting": 25.16,
         "4th position batting": 16.61,
         "5th position batting": 24.0,
-        "6th position batting": 23.92,
+        "6th position batting": 23.61,
         "7th position batting": 19.04,
         "8th position batting": 18.26,
         "9th position batting": 19.25,
         "runs": 4873,
-        "batting_average": 21.18,
-        "batting_innings": 317,
-        "strike_rate": 151.1,
+        "batting_average": 21.09,
+        "batting_innings": 318,
+        "strike_rate": 151.05,
         "fours": 357,
         "sixes": 274
     },
     {
         "name": "Lakshmipathy Balaji",
+        "role": "AllRounder",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium-fast",
         "awards": 3,
@@ -392,6 +407,7 @@
     },
     {
         "name": "Doug Bollinger",
+        "role": "Bowler",
         "bat_style": "left-hand bat",
         "bowl_style": "left-arm fast-medium",
         "awards": 3,
@@ -417,6 +433,7 @@
     },
     {
         "name": "Manpreet Gony",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 2,
@@ -445,6 +462,7 @@
     },
     {
         "name": "Shadab Jakati",
+        "role": "Bowler",
         "bat_style": "left-hand bat",
         "bowl_style": "slow left-arm orthodox",
         "awards": 1,
@@ -475,6 +493,7 @@
     },
     {
         "name": "Muthiah Muralidaran",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm offbreak",
         "awards": 5,
@@ -503,6 +522,7 @@
     },
     {
         "name": "Makhaya Ntini",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm fast",
         "awards": 2,
@@ -526,6 +546,7 @@
     },
     {
         "name": "Thilan Thushara",
+        "role": "Bowler",
         "bat_style": "left-hand bat",
         "bowl_style": "left-arm fast-medium",
         "awards": 0,
@@ -556,6 +577,7 @@
     },
     {
         "name": "Sudeep Tyagi",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 0,
@@ -578,6 +600,7 @@
     },
     {
         "name": "Chandrasekar Ganapathy",
+        "role": "Bowler",
         "bat_style": "right-hand bat",
         "bowl_style": "right-arm medium",
         "awards": 0,
