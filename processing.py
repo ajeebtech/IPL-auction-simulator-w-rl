@@ -13,12 +13,14 @@ start = time.perf_counter()
 pricesdf = pd.read_csv('/Users/jatin/Documents/model stuff/IPLPlayerTrends.csv')
 # need to predict prices of all these
 
-def mse_score(tensor1, tensor2, alpha=None):
-    mse = torch.mean((tensor1 - tensor2) ** 2)
-    if alpha is None:
-        alpha = 1 / (mse.item() + 1e-6)  # Avoid division by zero
-    print(f'mse score: {torch.exp(-alpha * mse)}')
-    return torch.exp(-alpha * mse)
+def feature_similarity(tensor1, tensor2, epsilon=1e-6):
+    tensor1, tensor2 = tensor1.flatten(), tensor2.flatten()  # Ensure 1D
+    
+    similarity = 1 - (torch.abs(tensor1 - tensor2) / (torch.maximum(tensor1, tensor2) + epsilon))
+    overall_similarity = similarity.mean()  # Get average similarity across features
+    
+    print(f'Feature Similarity: {overall_similarity.item()}')
+    return overall_similarity
 
 
 def position_score(player1_bataverages, player2_bataverages, player1_bowlaverages, player2_bowlaverages, role1, role2, weight=0.5):
@@ -86,7 +88,7 @@ def position_score(player1_bataverages, player2_bataverages, player1_bowlaverage
 
     else:
         return 0.0
-
+    print(f'position score: {score.item()}')
     return score.item()
 
 
@@ -145,8 +147,8 @@ class xPlayer(gym.Env):
         self.role = role
 
 def create_squad(df, squad={}):
-    for i in range(len(df)):  # Use positional index
-        row = df.iloc[i]  # Get row as Series using .iloc
+    for i in range(len(df)): 
+        row = df.iloc[i]
         
         # Feature processing
         bowl_style = style_tokenizer(row['bowl_style'])
@@ -281,15 +283,19 @@ def normalize_awards(player_awards, min_awards=0, max_awards=43):
     return normalized_score
 
 def relatability_score(newplyr, player):  # this will be done with respect to every player in that squad, this is only comparing the player to the players in the squad
-    score = position_score(player2_bataverages=newplyr.postenbat, player1_bataverages=player.postenbat, player2_bowlaverages=newplyr.postenbol, player1_bowlaverages=player.postenbol,role1=newplyr.role,role2=player.role)
-    relatibility = mse_score(newplyr.tensor, player.tensor)
+    score = position_score(player2_bataverages=newplyr.postenbat, player1_bataverages=player.postenbat,
+                            player2_bowlaverages=newplyr.postenbol, player1_bowlaverages=player.postenbol,
+                            role1=newplyr.role,role2=player.role)
+    relatibility = feature_similarity(newplyr.tensor, player.tensor)
     score += relatibility
     try:
         score += normalize_awards(newplyr.awards)*0.4
+        print(f'awards: {newplyr.awards*0.4}')
     except Exception:
         pass
     try:
         score += newplyr.importance
+        print(f'importance: {newplyr.importance}')
     except:
         pass
     return score
@@ -304,10 +310,13 @@ def price_predictor(plyr, df=pricesdf):
     return predicted_amount
 
 
-def budget(relatibility:int,predicted_price:int):      
-    if relatibility > 3:
-        budget = predicted_price + 50000000
-    return budget
+def calculate_budget(relatibility: float, predicted_price: float):
+    final_budget = 0  # Avoid naming conflict
+    if relatibility > 2.22222222:
+        final_budget = predicted_price + 50000000
+    else:
+        final_budget = predicted_price + 10000000
+    return final_budget
 
 def find_closest_player(isquad,newplyr):
     scores = {}
@@ -316,29 +325,33 @@ def find_closest_player(isquad,newplyr):
     max_key = max(scores, key=scores.get)
     return isquad[max_key]
 
-def reward(price,relatibility,budget):
-    reward = 0
+def calculate_reward(price, relatibility, budget):
+    score = 0  # Changed 'reward' to 'score' inside the function
     if price < budget:
-        reward += 5
+        score += 5
     else:
-        reward -= 3
-    if relatibility > 2:
-        reward += 5
+        score -= 5
+    if relatibility > 2.22222222:
+        score += 10
     else:
-        reward -= 3
-    return reward
+        score -= 3
+    return score
+
+def skip_reward(relatibility,price,budget):
+    if relatibility < 2:
+        return +5
+    if price < budget:
+        return -5
 
 def loot_rewards(squad):
-    wks = 0
     reward = 0
-    for player in squad.values():
-        if player.role.lower() == 'Wicketkeeper':
-            wks += 1
-    if wks == 0:
+    if squad.wks == 0:
         reward -= 11
-    elif 4 > wks > 2:
+    elif 4 > squad.wks > 2:
         reward += 11
-    #overseas rewards
+    if squad.overseas > 8:
+        reward -= 11
+    return reward
     
 end = time.perf_counter()
 elapsed = end - start
