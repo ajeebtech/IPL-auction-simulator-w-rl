@@ -1,33 +1,26 @@
-marquee_names = ["Rishabh Pant", "Shreyas Iyer", "Jos Buttler", "Mitchell Starc", "Kl Rahul", "Yuzvendra Chahal", "Mohammad Shami", "Kagiso Rabada", "Jofra Archer"]
-marquee_nationalities = ["🛺", "🛺", "✈️", "✈️", "🛺", "🛺", "🛺", "✈️", "✈️", "✈️"]
-marquee_roles = ["Wicketkeeper", "Batter", "Wicketkeeper", "Bowler", "Batter", "Bowler", "Bowler", "Bowler", "All Rounder", "Bowler"]
-marquee = [marquee_names, marquee_nationalities, marquee_roles, 20000000]
+import csv
+import re
 
-ba1_names = ["David Miller", "Phil Salt", "Harry Brook", "Rachin Ravindra", "Devon Conway", "Nitish Rana", "Rahul Tripathi", "Aiden Markram"]
-ba1_nationalities = ["✈️", "✈️", "✈️", "✈️", "✈️", "🛺", "🛺", "✈️"]
-ba1_roles = ["Batter", "Wicketkeeper", "Batter", "All-Rounder", "Batter", "All Rounder", "Batter", "Batter"]
-ba1 = [ba1_names, ba1_nationalities, ba1_roles, 10000000]
+marquee_names = []
+marquee_nationalities = []
+marquee_roles = []
 
-al1_names = ["Glenn Maxwell", "Marcus Stoinis", "Liam Livingstone", "Mitchell Marsh", "Sam Curran", "Washington Sundar", "Shahbaz Ahamad", "Vijay Shankar"]
-al1_nationalities = ["✈️", "✈️", "✈️", "✈️", "✈️", "🛺", "🛺", "🛺"]
-al1_roles = ["All Rounder", "All Rounder", "All Rounder", "All Rounder", "All Rounder", "AllRounder", "All Rounder", "All Rounder"]
-al1 = [al1_names, al1_nationalities, al1_roles, 10000000]
+with open('/Users/jatin/Documents/model stuff/auction2024list.csv', newline='', encoding='utf-8') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        # Create full name and clean extra spaces
+        full_name = re.sub(r'\s+', ' ', f"{row['First Name']} {row['Surname']}").strip()
+        marquee_names.append(full_name.title())
+        
+        # Determine nationality emoji
+        nationality = '🛺' if row['Country'] == 'India' else '✈️'
+        marquee_nationalities.append(nationality)
+        
+        # Get role and clean extra spaces
+        role = re.sub(r'\s+', ' ', row['Specialism']).strip().title()
+        marquee_roles.append(role)
 
-wks1_names = ["Ishan Kishan", "Jitesh Sharma", "Josh Inglis", "Heinrich Klaasen", "Nicholas Pooran", "Rahmanullah Gurbaz", "Matthew Wade", "Sanju Samson"]
-wks1_nationalities = ["🛺", "🛺", "✈️", "✈️", "✈️", "✈️", "✈️", "🛺"]
-wks1_roles = ["Wicketkeeper", "Wicketkeeper", "Wicketkeeper", "Wicketkeeper", "Wicketkeeper", "Wicketkeeper", "Wicketkeeper", "Wicketkeeper"]
-wks1 = [wks1_names, wks1_nationalities, wks1_roles, 10000000]
-
-seamers1_names = ["Arshdeep Singh", "Mohammed Siraj", "Pat Cummins", "Trent Boult", "Bhuvneshwar Kumar", "Deepak Chahar", "Josh Hazlewood", "Prasidh Krishna"]
-seamers1_nationalities = ["🛺", "🛺", "✈️", "✈️", "🛺", "🛺", "✈️", "🛺"]
-seamers1_roles = ["Bowler", "Bowler", "Bowler", "Bowler", "Bowler", "Bowler", "Bowler", "Bowler"]
-seamers1 = [seamers1_names, seamers1_nationalities, seamers1_roles, 10000000]
-
-spinners1_names = ["Yuzvendra Chahal", "R Ashwin", "Adam Zampa", "Wanindu Hasaranga", "Mayank Markande", "Noor Ahmad", "Kuldeep Yadav", "Maheesh Theekshana"]
-spinners1_nationalities = ["🛺", "🛺", "✈️", "✈️", "🛺", "✈️", "🛺", "✈️"]
-spinners1_roles = ["Bowler", "Bowler", "Bowler", "Bowler", "Bowler", "Bowler", "Bowler", "Bowler"]
-spinners1 = [spinners1_names, spinners1_nationalities, spinners1_roles, 10000000]
-
+marquee = [marquee_names,marquee_nationalities,marquee_roles,20000000]
 
 #                                                                    dataSourcing
 
@@ -237,10 +230,15 @@ def adding(player,team):
     if player.nationality == "✈️":
         team.overseas += 1
 
-def removing(player,set,index):
-    set[0].remove(player)
-    set[1].remove(set[1][index])
-    set[2].remove(set[2][index])
+def removing(player, set_container):
+    """Safer removal using player reference"""
+    try:
+        idx = set_container[0].index(player.name)  # Find index by name
+        del set_container[0][idx]
+        del set_container[1][idx]
+        del set_container[2][idx]
+    except ValueError:
+        print(f"⚠️ {player.name} not found in set")
 
 from auction_gyms import DelhiCapitalsEnv
 from processing import *
@@ -254,19 +252,21 @@ agent = Agent(alpha=0.000025, beta=0.00025, input_dims=[8], tau=0.001, env=env,
 isquad = create_squad(df=team_df)
 np.random.seed(0)
 num_iterations = 1000
-def bidding(set,obs, env,agent=agent,score=0):
+def bidding(setx,obs, env,agent=agent,score=0,isquad=isquad):
     reward = 0
-    y = len(set[0])
+    y = len(setx[0])
     for i in range(y):
-        active_player = rd.choice(set[0])    # choose a player and use the csv to reference it and make an object to compare!
+        if not isquad:  # Add check here
+            print("🛑 Squad empty - stopping auction")
+            return [obs, score]
+        active_player = rd.choice(setx[0])    # choose a player and use the csv to reference it and make an object to compare!
         newplyr = create_player(df=df,player=active_player)
         player = find_closest_player(newplyr=newplyr,isquad=isquad)
         relatability = relatability_score(newplyr=newplyr,player=player)
-        x = set[0].index(active_player)
-        active = Player(name=active_player,role=set[2][x],nationality=set[1][x],price=set[3])
+        x = setx[0].index(active_player)
+        active = Player(name=active_player,role=setx[2][x],nationality=setx[1][x],price=setx[3])
         checker = ['no bid']*len(teams)  
         bid_action = agent.choose_action(obs)
-        print(f"bid_action: {bid_action}, type: {type(bid_action)}")  # Debugging
         if bid_action > 0:
             while not active.isSold:
                 budget = calculate_budget(relatibility=relatability, predicted_price=price_predictor(plyr=newplyr, df=pricesdf))
@@ -277,7 +277,7 @@ def bidding(set,obs, env,agent=agent,score=0):
                 bids_values = list(bids.values())
                 if bids_values == checker:                         # if no one bids for the player, he's yours
                     adding(player=active,team = your_team)
-                    removing(player=active_player,set=set,index=x)
+                    removing(player=active,set_container=setx)
                     print(f'{active.name} has been sold to {your_team.name} for {active.price}! ')
                     reward = calculate_reward(price=active.price,relatibility=relatability,budget=calculate_budget(relatibility=relatability, predicted_price=price_predictor(plyr=newplyr, df=pricesdf)))
                     new_state, reward, done, info = env.step(bid_action)
@@ -286,6 +286,9 @@ def bidding(set,obs, env,agent=agent,score=0):
                     score += reward
                     obs = new_state
                     del isquad[player.name]
+                    if not isquad:  # Check after removal
+                        print("🛑 Final player sold - ending auction")
+                    return [obs, score]
                     active.isSold = True
                 else:
                     if your_team.purse > active.price:
@@ -304,14 +307,14 @@ def bidding(set,obs, env,agent=agent,score=0):
                                     agent.learn()
                                     score += reward
                                     obs = new_state
-                                    removing(player=active_player,set=set,index=x)
+                                    removing(player=active,set_container=setx)
                                     active.isSold = True
                     else:
                         for i in range(len(bids)-1,-1,-1):
                                 if bids_values[i] == 'bid':
                                     bid_winner = list(bids.keys())[i]
                                     print(f'{active.name} will be sold to {bid_winner} at {active.price}')       
-                                    removing(player=active_player,set=set,index=x)
+                                    removing(player=active,set_container=setx)
                                     active.isSold = True
                                 
         else:
@@ -322,19 +325,35 @@ def bidding(set,obs, env,agent=agent,score=0):
             agent.learn()
             score += reward
             obs = new_state
-            removing(player=active_player,set=set,index=x)
+            removing(player=active,set_container=setx)
     print(f'After the end of this set, this is how {your_team.name} looks like! \n {your_team.squad}')      
     return [obs, score]
 
-sets = [marquee,ba1,al1,wks1,seamers1,spinners1]    
+sets = [marquee]    
 score_history = []
 
 for j in range(num_iterations):
     obs = env.reset()
     score = 0
+    isquad = create_squad(df=team_df)
+    with open('/Users/jatin/Documents/model stuff/auction2024list.csv', newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+
+            full_name = re.sub(r'\s+', ' ', f"{row['First Name']} {row['Surname']}").strip()
+            marquee_names.append(full_name.title())
+
+            nationality = '🛺' if row['Country'] == 'India' else '✈️'
+            marquee_nationalities.append(nationality)
+            
+            role = re.sub(r'\s+', ' ', row['Specialism']).strip().title()
+            marquee_roles.append(role)
+
+        marquee = [marquee_names,marquee_nationalities,marquee_roles,20000000]
+    sets = [marquee]
     for i in range(len(sets)):
-        [obs,score] =  bidding(sets[i],agent=agent,env=env,obs=obs,score=score)
-    score += loot_rewards(squad=your_team.squad)     #  rewards based on structure of made team
+        [obs,score] =  bidding(setx=sets[i],agent=agent,env=env,obs=obs,score=score,isquad=isquad)
+    score += loot_rewards(squad=your_team)     #  rewards based on structure of made team
     score_history.append(score)
     if j % 25 == 0:
             agent.save_models()   
