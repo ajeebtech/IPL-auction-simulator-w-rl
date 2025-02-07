@@ -1,48 +1,6 @@
 import torch
 import gym
 import time
-
-start = time.perf_counter()
-
-def mse_score(tensor1, tensor2, alpha=None):
-    mse = torch.mean((tensor1 - tensor2) ** 2)
-    if alpha is None:
-        alpha = 1 / (mse.item() + 1e-6)  # Avoid division by zero
-    return torch.exp(-alpha * mse)
-
-
-def position_score(player1_bataverages, player2_bataverages, player1_bowlaverages,player2_bowlaverages):
-    best_position = torch.argmax(player2_bataverages).item()
-    p1_avg = player1_bataverages[best_position]
-    p2_avg = player2_bataverages[best_position]
-    if p2_avg > p1_avg:
-        return 1.0
-    dot_product = torch.dot(player1_bataverages, player2_bataverages)
-    norm_p1 = torch.norm(player1_bataverages, p=2)
-    norm_p2 = torch.norm(player2_bataverages, p=2)
-    similarity = dot_product / (norm_p1 * norm_p2 + 1e-6)
-    score = torch.sigmoid(similarity)
-    print(f'post. {score}')
-    return score.item()
-
-def style_tokenizer(style):
-    if style == 'right-arm offbreak' or 'slow left-arm orthodox ':
-        token = 1.0
-    elif style == 'legbreak googly' or 'legbreak' or 'left-arm wrist-spin':
-        token = 1.5
-    elif style == 'left-arm fast' or 'right-arm fast':
-        token = 5
-    elif style == 'left-arm medium-fast' or 'right-arm medium-fast':
-        token = 4.5
-    elif style == 'right-arm fast-medium' or 'left-arm fast-medium':
-        token = 3
-    elif style == 'right-arm medium' or 'left-arm medium' or 'right-arm slow-medium':
-        token = 2.5
-    else:
-        token = 0.0
-    return token
-
-import torch
 import pandas as pd
 import torch.nn as nn
 import torch.nn.functional as F
@@ -50,12 +8,121 @@ import torch.optim as optim
 import numpy as np
 import gym
 
+start = time.perf_counter()
+
+pricesdf = pd.read_csv('/Users/jatin/Documents/model stuff/IPLPlayerTrends.csv')
+# need to predict prices of all these
+
+def mse_score(tensor1, tensor2, alpha=None):
+    mse = torch.mean((tensor1 - tensor2) ** 2)
+    if alpha is None:
+        alpha = 1 / (mse.item() + 1e-6)  # Avoid division by zero
+    print(f'mse score: {torch.exp(-alpha * mse)}')
+    return torch.exp(-alpha * mse)
+
+
+def position_score(player1_bataverages, player2_bataverages, player1_bowlaverages, player2_bowlaverages, role1, role2, weight=0.5):
+    if role1 == 'Batter' and role2 == 'Batter':
+        # Existing batter-batter comparison
+        best_position = torch.argmax(player2_bataverages).item()
+        p1_avg = player1_bataverages[best_position]
+        p2_avg = player2_bataverages[best_position]
+        
+        if p2_avg > p1_avg:
+            return 1.0
+        
+        dot_product = torch.dot(player1_bataverages, player2_bataverages)
+        norm_p1 = torch.norm(player1_bataverages)
+        norm_p2 = torch.norm(player2_bataverages)
+        similarity = dot_product / (norm_p1 * norm_p2 + 1e-6)
+        score = torch.sigmoid(similarity)
+        
+    elif role1 == 'Bowler' and role2 == 'Bowler':
+        # Existing bowler-bowler comparison
+        best_position = torch.argmax(player2_bowlaverages).item()
+        p1_avg = player1_bowlaverages[best_position]
+        p2_avg = player2_bowlaverages[best_position]
+        
+        if p2_avg < p1_avg:
+            return 1.0
+        
+        dot_product = torch.dot(player1_bowlaverages, player2_bowlaverages)
+        norm_p1 = torch.norm(player1_bowlaverages)
+        norm_p2 = torch.norm(player2_bowlaverages)
+        similarity = dot_product / (norm_p1 * norm_p2 + 1e-6)
+        score = torch.sigmoid(similarity)
+        
+    elif (role1, role2) in [('Allrounder', 'Bowler'), ('Bowler', 'Allrounder')]:
+        # Existing bowler-allrounder comparison
+        batting_best = torch.argmax(player2_bataverages).item()
+        bowling_best = torch.argmax(player1_bowlaverages).item()
+        
+        bat_score = 1.0 if player2_bataverages[batting_best] > player1_bataverages[batting_best] \
+            else torch.sigmoid(torch.dot(player1_bataverages, player2_bataverages) / (torch.norm(player1_bataverages)*torch.norm(player2_bataverages)+1e-6))
+        
+        bowl_score = 1.0 if player2_bowlaverages[bowling_best] < player1_bowlaverages[bowling_best] \
+            else torch.sigmoid(torch.dot(player1_bowlaverages, player2_bowlaverages) / (torch.norm(player1_bowlaverages)*torch.norm(player2_bowlaverages)+1e-6))
+        
+        score = (weight * bat_score) + ((1 - weight) * bowl_score)
+
+    # New batter-allrounder comparisons #########################################
+    elif (role1, role2) in [('Batter', 'Allrounder'), ('Allrounder', 'Batter')]:
+        # Determine which is batter/allrounder based on roles
+        batter_bat = player1_bataverages if role1 == 'Batter' else player2_bataverages
+        allrounder_bat = player2_bataverages if role2 == 'Allrounder' else player1_bataverages
+        allrounder_bowl = player2_bowlaverages if role2 == 'Allrounder' else player1_bowlaverages
+
+        # Batting comparison at batter's strongest position
+        batting_pos = torch.argmax(batter_bat).item()
+        bat_score = 1.0 if allrounder_bat[batting_pos] > batter_bat[batting_pos] \
+            else torch.sigmoid(torch.dot(batter_bat, allrounder_bat) / (torch.norm(batter_bat)*torch.norm(allrounder_bat)+1e-6))
+
+        # Bowling comparison (allrounder vs batter's bowling ability)
+        bowl_pos = torch.argmax(allrounder_bowl).item()
+        bowl_score = 1.0 if allrounder_bowl[bowl_pos] < player1_bowlaverages[bowl_pos] \
+            else torch.sigmoid(torch.dot(allrounder_bowl, player1_bowlaverages) / (torch.norm(allrounder_bowl)*torch.norm(player1_bowlaverages)+1e-6))
+
+        score = (weight * bat_score) + ((1 - weight) * bowl_score)
+
+    else:
+        return 0.0
+
+    return score.item()
+
+
+def style_tokenizer(style):
+    if isinstance(style, str) and pd.isna(style):
+        return 0.0
+
+    style_mapping = {
+        'right-arm offbreak': 1.0,
+        'slow left-arm orthodox': 1.0,
+        'legbreak googly': 1.5,
+        'legbreak': 1.5,
+        'left-arm wrist-spin': 1.5,
+        'right-arm fast': 5,
+        'right-arm fast-medium': 5,
+        'left-arm medium-fast': 4.5,
+        'right-arm medium-fast': 4.5,
+        'right-arm fast-medium': 3,
+        'left-arm fast-medium': 3,
+        'left-arm medium': 2.5,
+        'right-arm medium': 2.5,
+        'slow left-arm medium': 2.5
+    }
+    
+    # Handle case where style is missing or invalid
+    if isinstance(style, str):
+        return style_mapping.get(style, 0.0)
+    return 0.0
+
+
 df = pd.read_csv('/Users/jatin/Documents/python/the big thing/csvs/csk_dataset.csv')
 pricesdf = pd.read_csv('/Users/jatin/Documents/python/the big thing/CatBoostPredictedIPLPlayerPrices.csv')
 class xPlayer(gym.Env):
     def __init__(self, tensor, name, bat_style, bowl_style, bowling_average, batting_average,
                  bowling_innings, economy_rate, field_style, awards, runs, sixes, fours, 
-                 strike_rate, importance, wickets, postenbat, postenbol, batting_innings):
+                 strike_rate, importance, wickets, postenbat, postenbol, batting_innings,role):
         self.name = name
         self.bat_style = bat_style
         self.bowl_style = bowl_style
@@ -75,60 +142,150 @@ class xPlayer(gym.Env):
         self.tensor = tensor
         self.postenbat = postenbat
         self.postenbol = postenbol
+        self.role = role
 
-def create_squad(df,squad={}):
+def create_squad(df, squad={}):
+    for i in range(len(df)):  # Use positional index
+        row = df.iloc[i]  # Get row as Series using .iloc
+        
+        # Feature processing
+        bowl_style = style_tokenizer(row['bowl_style'])
+        field_style = 1 if row['field_style'] == 'wicketkeeper' else 0
+        bat_style = 2 if row['bat_style'] == 'left-hand bat' else 1.0
+        
+        # Performance metrics
+        batting_innings = row['batting_innings']
+        bpi = (row['fours'] + row['sixes']) / batting_innings if batting_innings else 0
+        rpi = row['runs'] / batting_innings if batting_innings else 0
+        wpi = row['wickets'] / row['bowling_innings'] if row['bowling_innings'] else 0
 
-    for _, row in df.iterrows():
-        row['bowl_style'] = style_tokenizer(row['bowl_style'])
-        row['field_style'] = 1.0 if row['field_style'] == 'wicketkeeper' else 0
-        row['bat_style'] = 1.5 if row['bat_style'] == 'left-hand bat' else 1.0
-
-        # Compute additional features
-        bpi = 0 if not row['batting_innings'] else (row['fours'] + row['sixes']) / row['batting_innings']
-        rpi = 0 if not row['batting_innings'] else row['runs'] / row['batting_innings']
-        wpi = 0 if not row['bowling_innings'] else row['wickets'] / row['bowling_innings']
-
-        # Create tensors
+        # Tensor construction
         additional_tensor = torch.tensor([bpi, rpi, wpi], dtype=torch.float32)
-        selected_columns = row[['bat_style', 'bowl_style', 'field_style', 
-                                'batting_average', 'strike_rate', 
-                                'bowling_average', 'economy_rate']].to_numpy(dtype=float)
-        tensor = torch.tensor(selected_columns, dtype=torch.float32)
-        tensor = torch.cat((tensor, additional_tensor))
-
-        # Position tensors
-        position_tensor_batting = torch.tensor([
-            row.get(f'{i+1}st position batting', 0.0) for i in range(11)
+        
+        selected_tensor = torch.tensor([
+            bat_style,
+            bowl_style,
+            field_style,
+            row['batting_average'],
+            row['strike_rate'],
+            row['bowling_average'],
+            row['economy_rate']
         ], dtype=torch.float32)
-
-        position_tensor_bowling = torch.tensor([
-            row.get(f'{i+1}st position bowling', 0.0) for i in range(11)
-        ], dtype=torch.float32)
-
-        # Create Player object
-        squad[row['name']] = xPlayer(
-            tensor=tensor, name=row['name'], bat_style=row['bat_style'],
-            bowl_style=row['bowl_style'], batting_average=row['batting_average'],
-            bowling_average=row['bowling_average'], economy_rate=row['economy_rate'],
-            field_style=row['field_style'], awards=row['awards'], runs=row['runs'],
-            sixes=row['sixes'], fours=row['fours'], strike_rate=row['strike_rate'],
-            importance=row['importance'], wickets=row['wickets'], postenbat=position_tensor_batting,
-            postenbol=position_tensor_bowling, batting_innings=row['batting_innings'],
-            bowling_innings=row['bowling_innings']
+        
+        position_tensor_batting = torch.tensor(
+            [row.get(f'{pos+1}st position batting', 0.0) for pos in range(11)],
+            dtype=torch.float32
+        )
+        
+        position_tensor_bowling = torch.tensor(
+            [row.get(f'{pos+1}st position bowling', 0.0) for pos in range(11)],
+            dtype=torch.float32
         )
 
+        # Player object creation
+        squad[row['name']] = xPlayer(
+            tensor=torch.cat((selected_tensor, additional_tensor)),
+            name=row['name'],
+            bat_style=bat_style,
+            bowl_style=bowl_style,
+            field_style=field_style,
+            batting_average=row['batting_average'],
+            bowling_average=row['bowling_average'],
+            economy_rate=row['economy_rate'],
+            awards=row['awards'],
+            runs=row['runs'],
+            sixes=row['sixes'],
+            fours=row['fours'],
+            strike_rate=row['strike_rate'],
+            importance=row['importance'],
+            wickets=row['wickets'],
+            postenbat=position_tensor_batting,
+            postenbol=position_tensor_bowling,
+            batting_innings=row['batting_innings'],
+            bowling_innings=row['bowling_innings'],
+            role=row['role']
+        )
+    
     return squad
+
+
+def create_player(df, player):
+    # Get matching rows and validate uniqueness
+    player_matches = df[df["name"] == player]
+    if len(player_matches) != 1:
+        raise ValueError(f"Expected 1 match for player '{player}', found {len(player_matches)}")
+    
+    row = player_matches.iloc[0]  # Explicit single row selection
+    
+    # Style conversions
+    bowl_style = style_tokenizer(row['bowl_style'])
+    field_style = 1 if row['field_style'] == 'wicketkeeper' else 0
+    bat_style = 2 if row['bat_style'] == 'left-hand bat' else 1
+
+    # Performance indicators with scalar checks
+    batting_innings = row['batting_innings']
+    bowling_innings = row['bowling_innings']
+    
+    bpi = 0 if not batting_innings else (row['fours'] + row['sixes']) / batting_innings
+    rpi = 0 if not batting_innings else row['runs'] / batting_innings
+    wpi = 0 if not bowling_innings else row['wickets'] / bowling_innings
+
+    # Tensor construction
+    additional_tensor = torch.tensor([bpi, rpi, wpi], dtype=torch.float32)
+    selected_tensor = torch.tensor([
+            bat_style,
+            bowl_style,
+            field_style,
+            row['batting_average'],
+            row['strike_rate'],
+            row['bowling_average'],
+            row['economy_rate']
+        ], dtype=torch.float32)
+    position_tensor_batting = torch.tensor(
+            [row.get(f'{pos+1}st position batting', 0.0) for pos in range(11)],
+            dtype=torch.float32
+        )
+        
+    position_tensor_bowling = torch.tensor(
+        [row.get(f'{pos+1}st position bowling', 0.0) for pos in range(11)],
+        dtype=torch.float32
+    )
+
+    player = xPlayer(
+        tensor=torch.cat((selected_tensor, additional_tensor)),
+        name=row['name'],
+        bat_style=bat_style,
+        bowl_style=bowl_style,
+        field_style=field_style,
+        batting_average=row['batting_average'],
+        bowling_average=row['bowling_average'],
+        economy_rate=row['economy_rate'],
+        awards=row['awards'],
+        runs=row['runs'],
+        sixes=row['sixes'],
+        fours=row['fours'],
+        strike_rate=row['strike_rate'],
+        importance=row['importance'],
+        wickets=row['wickets'],
+        postenbat=position_tensor_batting,
+        postenbol=position_tensor_bowling,
+        batting_innings=row['batting_innings'],
+        bowling_innings=row['bowling_innings'],
+        role=row['role']
+    )
+    return player
+
 
 def normalize_awards(player_awards, min_awards=0, max_awards=43):
     normalized_score = (player_awards - min_awards) / (max_awards - min_awards + 1e-6)
     return normalized_score
 
 def relatability_score(newplyr, player):  # this will be done with respect to every player in that squad, this is only comparing the player to the players in the squad
-    score = position_score(player2_averages=newplyr.postenbat, player1_averages=player.postenbat, player2_bowlaverages=newplyr.postenbol,player1_bowlaverages= player.postenbol)
+    score = position_score(player2_bataverages=newplyr.postenbat, player1_bataverages=player.postenbat, player2_bowlaverages=newplyr.postenbol, player1_bowlaverages=player.postenbol,role1=newplyr.role,role2=player.role)
     relatibility = mse_score(newplyr.tensor, player.tensor)
     score += relatibility
     try:
-        score += normalize_awards(newplyr.awards)*0.2
+        score += normalize_awards(newplyr.awards)*0.4
     except Exception:
         pass
     try:
@@ -137,27 +294,52 @@ def relatability_score(newplyr, player):  # this will be done with respect to ev
         pass
     return score
 
-def price_predictor(score,plyr,df=pricesdf):
-    predicted_amount = 5000000 if not df[df['Player'] == plyr.name]['Predicted Amount'] else df[df['Player'] == plyr.name]['Predicted Amount']
+def price_predictor(plyr, df=pricesdf):
+    player_df = df[df['Player'] == plyr.name]
+    predicted_amount = 5_000_000  # Default value
+    
+    if not player_df.empty:  # Correct empty check
+        predicted_amount = player_df['Predicted Amount'].iloc[0] 
+    
     return predicted_amount
 
-def budget(relatibility,predicted_price):
-    if predicted_price:
-        pass
+
+def budget(relatibility:int,predicted_price:int):      
+    if relatibility > 3:
+        budget = predicted_price + 50000000
+    return budget
+
 def find_closest_player(isquad,newplyr):
     scores = {}
-    for name,pobject in isquad:
+    for name,pobject in isquad.items():
         scores[name] = relatability_score(player = pobject,newplyr=newplyr)
     max_key = max(scores, key=scores.get)
-    return max_key
+    return isquad[max_key]
 
 def reward(price,relatibility,budget):
-    # rewards based on prices at which they got bought and how useful they are
+    reward = 0
+    if price < budget:
+        reward += 5
+    else:
+        reward -= 3
+    if relatibility > 2:
+        reward += 5
+    else:
+        reward -= 3
     return reward
 
-def loot_rewards():
-    # team structure
-    pass
+def loot_rewards(squad):
+    wks = 0
+    reward = 0
+    for player in squad.values():
+        if player.role.lower() == 'Wicketkeeper':
+            wks += 1
+    if wks == 0:
+        reward -= 11
+    elif 4 > wks > 2:
+        reward += 11
+    #overseas rewards
+    
 end = time.perf_counter()
 elapsed = end - start
 print(f"Time elapsed: {elapsed} seconds")
