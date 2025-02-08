@@ -1,4 +1,5 @@
 import csv
+from tqdm import tqdm
 import re
 
 marquee_names = []
@@ -8,17 +9,16 @@ marquee_roles = []
 with open('/Users/jatin/Documents/model stuff/auction2024list.csv', newline='', encoding='utf-8') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-        # Create full name and clean extra spaces
-        full_name = re.sub(r'\s+', ' ', f"{row['First Name']} {row['Surname']}").strip()
-        marquee_names.append(full_name.title())
+        full_name = re.sub(r'\s+', ' ', f"{row['First Name']} {row['Surname']}").strip().title()
+            
+        marquee_names.append(full_name)
         
-        # Determine nationality emoji
         nationality = '🛺' if row['Country'] == 'India' else '✈️'
         marquee_nationalities.append(nationality)
         
-        # Get role and clean extra spaces
         role = re.sub(r'\s+', ' ', row['Specialism']).strip().title()
         marquee_roles.append(role)
+
 
 marquee = [marquee_names,marquee_nationalities,marquee_roles,20000000]
 
@@ -111,7 +111,7 @@ class Team:
                 if result[0] == 'bid':
                     bids[self.name] = 'bid'
                     self.bid(2000000,player)
-                    print(f'{self.name.upper()} has raised the bid by 20 lakh!,{player.price+2000000} please?')
+                    # print(f'{self.name.upper()} has raised the bid by 20 lakh!,{player.price+2000000} please?')
 
                 else:
                     pass
@@ -122,7 +122,7 @@ class Team:
                 if result[0] == 'bid':
                     bids[self.name] = 'bid'
                     self.bid(2000000,player)
-                    print(f'{self.name.upper()} has raised the bid by 20 lakh!,{player.price+2000000} please?')
+                    # print(f'{self.name.upper()} has raised the bid by 20 lakh!,{player.price+2000000} please?')
 
                 else:
                     pass
@@ -133,7 +133,7 @@ class Team:
                 if result[0] == 'bid':
                     bids[self.name] = 'bid'
                     self.bid(2000000,player)
-                    print(f'{self.name.upper()} has raised the bid by 20 lakh!,{player.price+2000000} please?')
+                    # print(f'{self.name.upper()} has raised the bid by 20 lakh!,{player.price+2000000} please?')
 
                 else:
                     pass
@@ -144,7 +144,7 @@ class Team:
             if result[0] == 'bid':
                 bids[self.name] = 'bid'
                 self.bid(2000000,player)
-                print(f'{self.name.upper()} has raised the bid by 20 lakh!,{player.price+2000000} please?')
+                # print(f'{self.name.upper()} has raised the bid by 20 lakh!,{player.price+2000000} please?')
 
             else:
                 pass
@@ -173,35 +173,123 @@ your_team_name = input("What team do you want to play as?(csk,dc,gt,kkr,lsg,mi,p
 teams_o = []         # objects of all teams
 for i in range(len(teams)):
     if teams[i] == 'csk':
-        csk = Team(purse=480000000,bmen=1,arounders=2,bwlrs=0,overseas=1,wks=1,name='csk',strats=csk_bids,squad =["Ravindra Jadeja","MS Dhoni","Moeen Ali","Ruturaj Gaikwad"])
+        csk = Team(
+            purse=580000000,  # 120Cr - 62Cr retentions
+            bmen=1,
+            arounders=2,
+            bwlrs=1,
+            overseas=1,
+            wks=1,
+            name='csk',
+            strats=csk_bids,
+            squad=["Ruturaj Gaikwad", "Ravindra Jadeja", "MS Dhoni", "Shivam Dube", "Matheesha Pathirana"]
+        )
         teams_o.append(csk)
     elif teams[i] == 'dc':
-        dc = Team(purse=475000000,bmen=1,arounders=1,bwlrs=1,overseas=1,wks=1,name='dc',strats=dc_bids,squad = ["Rishabh Pant","Axar Patel","Prithvi Shaw","Anrich Nortje"])
+        dc = Team(
+            purse=762500000,  # 120Cr - 43.75Cr retentions
+            bmen=2,
+            arounders=1,
+            bwlrs=1,
+            overseas=1,
+            wks=1,
+            name='dc',
+            strats=dc_bids,
+            squad=["Axar Patel", "Kuldeep Yadav", "Tristan Stubbs", "Abhishek Porel"]
+        )
         teams_o.append(dc)
     elif teams[i] == 'gt':
-        gt = Team(purse=598000000,bmen=1,arounders=1,bwlrs=1,overseas=1,wks=0,name='gt',strats=gt_bids,squad = ["Shubman Gill","Hardik Pandya","Rashid Khan"])
+        gt = Team(
+            purse=690000000,  # 120Cr - 51Cr retentions
+            bmen=3,
+            arounders=1,
+            bwlrs=1,
+            overseas=1,
+            wks=0,
+            name='gt',
+            strats=gt_bids,
+            squad=["Rashid Khan", "Shubman Gill", "Sai Sudharsan", "Rahul Tewatia", "Shahrukh Khan"]
+        )
         teams_o.append(gt)
     elif teams[i] == 'kkr':
-        kkr = Team(purse=480000000,bmen=0,arounders=3,bwlrs=1,overseas=2,wks=0,name='kkr',strats=kkr_bids,squad = ["Andre Russell","Varun Chakravarthy","Venkatesh Iyer","Sunil Narine"])
+        kkr = Team(
+            purse=510000000,  # 120Cr - 69Cr retentions
+            bmen=2,
+            arounders=2,
+            bwlrs=2,
+            overseas=2,
+            wks=0,
+            name='kkr',
+            strats=kkr_bids,
+            squad=["Rinku Singh", "Varun Chakravarthy", "Sunil Narine", "Andre Russell", "Harshit Rana", "Ramandeep Singh"]
+        )
         teams_o.append(kkr)
     elif teams[i] == 'lsg':
-        lsg = Team(purse=598000000,bmen=0,arounders=1,bwlrs=1,overseas=1,wks=1,name='lsg',strats=lsg_bids,squad = ["KL Rahul","Marcus Stoinis","Ravi Bishnoi"])
+        lsg = Team(
+            purse=690000000,  # 120Cr - 51Cr retentions
+            bmen=2,
+            arounders=0,
+            bwlrs=3,
+            overseas=1,
+            wks=1,
+            name='lsg',
+            strats=lsg_bids,
+            squad=["Nicholas Pooran", "Ravi Bishnoi", "Mayank Yadav", "Mohsin Khan", "Ayush Badoni"]
+        )
         teams_o.append(lsg)
     elif teams[i] == 'mi':
-        mi = Team(purse=480000000,bmen=2,arounders=1,bwlrs=1,overseas=1,wks=0,name='mi',strats=mi_bids,squad = ["Rohit Sharma","Jasprit Bumrah","Suryakumar Yadav","Kieron Pollard"])
+        mi = Team(
+            purse=460000000,  # 120Cr - 74Cr retentions
+            bmen=3,
+            arounders=1,
+            bwlrs=1,
+            overseas=0,
+            wks=0,
+            name='mi',
+            strats=mi_bids,
+            squad=["Jasprit Bumrah", "Suryakumar Yadav", "Hardik Pandya", "Rohit Sharma", "Tilak Varma"]
+        )
         teams_o.append(mi)
     elif teams[i] == 'pbks':
-        pbks = Team(purse=720000000,bmen=1,arounders=0,bwlrs=1,overseas=0,wks=0,name='pbks',strats=pbks_bids,squad = ["Mayank Agarwal","Arshdeep Singh"])
+        pbks = Team(
+            purse=1120000000,  # 120Cr - 8Cr retentions
+            bmen=2,
+            arounders=0,
+            bwlrs=0,
+            overseas=0,
+            wks=1,
+            name='pbks',
+            strats=pbks_bids,
+            squad=["Shashank Singh", "Prabhsimran Singh"]
+        )
         teams_o.append(pbks)
     elif teams[i] == 'rr':
-        rr = Team(purse=620000000,bmen=1,arounders=0,bwlrs=0,overseas=1,wks=2,name='rr',strats=rr_bids,squad = ["Sanju Samson","Jos Buttler","Yashasvi Jaiswal"])
+        rr = Team(
+            purse=410000000,  # 120Cr - 79Cr retentions
+            bmen=2,
+            arounders=1,
+            bwlrs=1,
+            overseas=1,
+            wks=2,
+            name='rr',
+            strats=rr_bids,
+            squad=["Sanju Samson", "Yashasvi Jaiswal", "Riyan Parag", "Dhruv Jurel", "Shimron Hetmyer", "Sandeep Sharma"]
+        )
         teams_o.append(rr)
-    elif teams[i] == 'rcb':
-        rcb = Team(purse=570000000,bmen=1,arounders=1,bwlrs=1,overseas=1,wks=0,name='rcb',strats=rcb_bids,squad = ["Virat Kohli","Glenn Maxwell","Mohammed Siraj"])
-        teams_o.append(rcb)
     elif teams[i] == 'srh':
-        srh = Team(purse=680000000,bmen=2,arounders=0,bwlrs=1,overseas=1,wks=0,name='srh',strats=srh_bids,squad = ["Kane Williamson","Abdul Samad","Umran Malik"])
-        teams_o.append(srh)     
+        srh = Team(
+            purse=697000000,  # 120Cr - 50.3Cr retentions
+            bmen=2,
+            arounders=1,
+            bwlrs=0,
+            overseas=2,
+            wks=1,
+            name='srh',
+            strats=srh_bids,
+            squad=["Heinrich Klaasen", "Pat Cummins", "Abhishek Sharma"]
+        )
+        teams_o.append(srh)
+
 
 for i in range(len(teams)):
     if teams_o[i].name == your_team_name:
@@ -238,8 +326,9 @@ def removing(player, set_container):
         del set_container[1][idx]
         del set_container[2][idx]
     except ValueError:
-        print(f"⚠️ {player.name} not found in set")
-
+        pass
+        # print(f"⚠️ {player.name} not found in set")
+# retentionsdf = pd.read_csv('/Users/jatin/Documents/python/the big thing/retentions.csv')
 from auction_gyms import DelhiCapitalsEnv
 from processing import *
 df = pd.read_csv('/Users/jatin/Documents/python/the big thing/csvs/auction_dataset.csv')
@@ -257,7 +346,7 @@ def bidding(setx,obs, env,agent=agent,score=0,isquad=isquad):
     y = len(setx[0])
     for i in range(y):
         if not isquad:  # Add check here
-            print("🛑 Squad empty - stopping auction")
+            # print("🛑 Squad empty - stopping auction")
             return [obs, score]
         active_player = rd.choice(setx[0])    # choose a player and use the csv to reference it and make an object to compare!
         newplyr = create_player(df=df,player=active_player)
@@ -278,7 +367,7 @@ def bidding(setx,obs, env,agent=agent,score=0,isquad=isquad):
                 if bids_values == checker:                         # if no one bids for the player, he's yours
                     adding(player=active,team = your_team)
                     removing(player=active,set_container=setx)
-                    print(f'{active.name} has been sold to {your_team.name} for {active.price}! ')
+                    # print(f'{active.name} has been sold to {your_team.name} for {active.price}! ')
                     reward = calculate_reward(price=active.price,relatibility=relatability,budget=calculate_budget(relatibility=relatability, predicted_price=price_predictor(plyr=newplyr, df=pricesdf)))
                     new_state, reward, done, info = env.step(bid_action)
                     agent.remember(obs, bid_action, reward, new_state, int(done))
@@ -287,20 +376,20 @@ def bidding(setx,obs, env,agent=agent,score=0,isquad=isquad):
                     obs = new_state
                     del isquad[player.name]
                     if not isquad:  # Check after removal
-                        print("🛑 Final player sold - ending auction")
+                        # print("🛑 Final player sold - ending auction")
+                        pass
                     return [obs, score]
                     active.isSold = True
                 else:
                     if your_team.purse > active.price:
                         bid_action = agent.choose_action(obs)
-                        print(f"bid_action: {bid_action}, type: {type(bid_action)}")  # Debugging
                         if bid_action > 0:
                            continue
                         else:
                             for i in range(len(bids)-1,-1,-1):
                                 if bids_values[i] == 'bid':
                                     bid_winner = list(bids.keys())[i]
-                                    print(f'{active.name} will be sold to {bid_winner} at {active.price}')
+                                    # print(f'{active.name} will be sold to {bid_winner} at {active.price}')
                                     reward = skip_reward(price=active.price,relatibility=relatability,budget=budget)
                                     new_state, reward, done, info = env.step(bid_action)
                                     agent.remember(obs, bid_action, reward, new_state, int(done))
@@ -313,12 +402,12 @@ def bidding(setx,obs, env,agent=agent,score=0,isquad=isquad):
                         for i in range(len(bids)-1,-1,-1):
                                 if bids_values[i] == 'bid':
                                     bid_winner = list(bids.keys())[i]
-                                    print(f'{active.name} will be sold to {bid_winner} at {active.price}')       
+                                    # print(f'{active.name} will be sold to {bid_winner} at {active.price}')       
                                     removing(player=active,set_container=setx)
                                     active.isSold = True
                                 
         else:
-            print(f"{active.name} will remain unsold!, next player please!")
+            # print(f"{active.name} will remain unsold!, next player please!")
             reward = calculate_reward(price=active.price,relatibility=relatability,budget=calculate_budget(relatibility=relatability, predicted_price=price_predictor(plyr=newplyr, df=pricesdf)))
             new_state, reward, done, info = env.step(bid_action)
             agent.remember(obs, bid_action, reward, new_state, int(done))
@@ -326,37 +415,42 @@ def bidding(setx,obs, env,agent=agent,score=0,isquad=isquad):
             score += reward
             obs = new_state
             removing(player=active,set_container=setx)
-    print(f'After the end of this set, this is how {your_team.name} looks like! \n {your_team.squad}')      
+    # print(f'After the end of this set, this is how {your_team.name} looks like! \n {your_team.squad}')      
     return [obs, score]
 
 sets = [marquee]    
 score_history = []
 
-for j in range(num_iterations):
+
+for j in tqdm(range(num_iterations), desc="Training Progress", bar_format="{l_bar}{bar} {n_fmt}/{total_fmt}"):
     obs = env.reset()
     score = 0
     isquad = create_squad(df=team_df)
+    
+    marquee_names, marquee_nationalities, marquee_roles = [], [], []
+
     with open('/Users/jatin/Documents/model stuff/auction2024list.csv', newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-
             full_name = re.sub(r'\s+', ' ', f"{row['First Name']} {row['Surname']}").strip()
             marquee_names.append(full_name.title())
 
             nationality = '🛺' if row['Country'] == 'India' else '✈️'
             marquee_nationalities.append(nationality)
-            
+
             role = re.sub(r'\s+', ' ', row['Specialism']).strip().title()
             marquee_roles.append(role)
 
-        marquee = [marquee_names,marquee_nationalities,marquee_roles,20000000]
+        marquee = [marquee_names, marquee_nationalities, marquee_roles, 20000000]
+    
     sets = [marquee]
     for i in range(len(sets)):
-        [obs,score] =  bidding(setx=sets[i],agent=agent,env=env,obs=obs,score=score,isquad=isquad)
-    score += loot_rewards(squad=your_team)     #  rewards based on structure of made team
-    score_history.append(score)
-    if j % 25 == 0:
-            agent.save_models()   
+        [obs, score] = bidding(setx=sets[i], agent=agent, env=env, obs=obs, score=score, isquad=isquad)
 
-    print('episode ', j, 'score %.2f' % score,
-          'trailing 100 games avg %.3f' % np.mean(score_history[-100:]))
+    score += loot_rewards(squad=your_team)  # Rewards based on squad structure
+    score_history.append(score)
+
+    if j % 25 == 0:
+        agent.save_models()
+
+    # print(f'Episode {j}, Score: {score:.2f}, Trailing 100 Avg: {np.mean(score_history[-100:]):.3f}')
