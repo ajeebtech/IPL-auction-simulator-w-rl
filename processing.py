@@ -7,8 +7,10 @@ import torch.nn.functional as F
 import torch.optim as optim
 import numpy as np
 import gym
+import re
+import json
+import requests
 
-start = time.perf_counter()
 
 pricesdf = pd.read_csv('/Users/jatin/Documents/model stuff/IPLPlayerTrends.csv')
 # need to predict prices of all these
@@ -18,10 +20,7 @@ def feature_similarity(tensor1, tensor2, epsilon=1e-6):
     
     similarity = 1 - (torch.abs(tensor1 - tensor2) / (torch.maximum(tensor1, tensor2) + epsilon))
     overall_similarity = similarity.mean()  # Get average similarity across features
-    
-    print(f'Feature Similarity: {overall_similarity.item()}')
     return overall_similarity
-
 
 def position_score(player1_bataverages, player2_bataverages, player1_bowlaverages, player2_bowlaverages, role1, role2, weight=0.5):
     if role1 == 'Batter' and role2 == 'Batter':
@@ -88,7 +87,6 @@ def position_score(player1_bataverages, player2_bataverages, player1_bowlaverage
 
     else:
         return 0.0
-    print(f'position score: {score.item()}')
     return score.item()
 
 
@@ -290,12 +288,10 @@ def relatability_score(newplyr, player):  # this will be done with respect to ev
     score += relatibility
     try:
         score += normalize_awards(newplyr.awards)*0.4
-        print(f'awards: {newplyr.awards*0.4}')
     except Exception:
         pass
     try:
         score += newplyr.importance
-        print(f'importance: {newplyr.importance}')
     except:
         pass
     return score
@@ -352,7 +348,3 @@ def loot_rewards(squad):
     if squad.overseas > 8:
         reward -= 11
     return reward
-    
-end = time.perf_counter()
-elapsed = end - start
-print(f"Time elapsed: {elapsed} seconds")
